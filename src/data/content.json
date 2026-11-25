@@ -47,7 +47,7 @@
   "cover": {
     "how": [
       "Turn the page with the corner tab, the arrow keys or a swipe.",
-      "Everything on the desk does something. Tap it and a pal will tell you what it means.",
+      "Tap desk objects to use them. Optional Hints explain each object once; they stay off unless you enable them.",
       "Every day has two sides. Switch between the new designer and the team."
     ],
     "cta": "Turn to Day 00",
@@ -743,7 +743,7 @@
     "The twelve days are narrative turning points, not longitudinal data. Nobody was followed for 90 days.",
     "Names, roles, letters, briefs, comments, drafts and replies are invented composites.",
     "No interview quotations appear here; themes are paraphrased.",
-    "Nothing is scored. Your marks, notes and choices stay in this browser tab and are cleared when you close or reset it."
+    "Nothing is scored. Your marks, notes and choices stay in this browser tab and are cleared when you close or reset it. Only your help preferences are remembered on this device."
   ],
   "props": {
     "mug": {

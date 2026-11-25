@@ -6,6 +6,7 @@ import { DeskScene } from './scenes/DeskScene';
 import { EvidenceDrawer, Finding, IndexPanel, Modal, NoteEditor, PrintPanel, PrintSummary, Sketchbook } from './components/Panels';
 import { META, PAGE_COUNT, dayAt } from './data/content';
 import { AssetImage } from './components/AssetImage';
+import { helpPreferences, saveHelp } from './help';
 
 const BASE_W = 1376, BASE_H = 768, BAR = 52, MIN_STAGE_SCALE = 0.84;
 
@@ -17,7 +18,8 @@ function useReducedMotion() {
 }
 
 export default function App() {
-  const [s, raw] = useReducer(reducer, initial);
+  const [s, raw] = useReducer(reducer, initial, base => {const prefs=helpPreferences(); return {...base, hints:prefs.enabled, tried:prefs.seen};});
+  useEffect(() => { saveHelp(s.hints, s.tried); }, [s.hints, s.tried]);
   // Every action goes through here so it can make its sound (when sound is on).
   const sref = useRef(s); sref.current = s;
   const d = useCallback((a: Action) => { const cur = sref.current; if (cur.sound) play(sfxFor(a, cur)); raw(a); }, []);
@@ -79,6 +81,7 @@ export default function App() {
           </label>
           <button type="button" className="tbtn" onClick={() => d({ t: 'panel', p: 'evidence' })} aria-pressed={s.panel === 'evidence'}>Evidence</button>
           <button type="button" className="tbtn" onClick={() => d({ t: 'panel', p: 'print' })}>Print</button>
+          <button type="button" className="tbtn" onClick={() => d({ t: 'hints' })} aria-pressed={s.hints} title="Optional hints appear once per object. Dismissed hints stay hidden.">Hints {s.hints ? 'on' : 'off'}</button>
           <button type="button" className="tbtn tbtn--icon" onClick={() => { raw({ t: 'sound' }); if (!s.sound) play('ding'); }} aria-pressed={s.sound} aria-label={s.sound ? 'Sound on. Turn sound off' : 'Sound off. Turn sound on'} title={s.sound ? 'Sound on' : 'Sound off'}>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor" />{s.sound ? <path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /> : <path d="M16 9l6 6M22 9l-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />}</svg>
           </button>

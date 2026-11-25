@@ -625,7 +625,7 @@ img { display: block; max-width: 100%; height: auto; user-select: none; -webkit-
 .whyslot { position: absolute; left: 18px; top: 96px; z-index: 26; width: 360px; }
 .stack .whyslot { position: relative; left: auto; top: auto; width: auto; margin: 0 12px 12px; }
 .whynote { position: relative; z-index: 6; display: grid; grid-template-columns: 54px 1fr auto; gap: 10px; align-items: center; padding: 8px 10px 8px 6px; background: #fff; border: 2px solid var(--sb-ink); border-radius: 14px; box-shadow: 4px 4px 0 var(--sb-ink); animation: tipIn 420ms cubic-bezier(.3,1.4,.5,1) both; }
-.whynote__pal { width: 54px; height: auto; animation: bob 2.6s ease-in-out infinite; }
+.whynote__pal { width: 54px; height: auto; }
 .whynote p { margin: 0; font: 500 13px/1.35 var(--fun); }
 .whynote b { display: block; font: 700 10px/1.2 var(--fun); letter-spacing: .12em; color: var(--sb-pink); margin-bottom: 2px; }
 .whynote__x { width: 28px; height: 28px; border: 2px solid var(--sb-ink); border-radius: 50%; background: var(--sb-yellow); font: 700 16px/1 var(--fun); }
@@ -638,7 +638,7 @@ img { display: block; max-width: 100%; height: auto; user-select: none; -webkit-
 .paltip { z-index: 30; display: grid; grid-template-columns: 62px 1fr; gap: 10px; align-items: start; width: 350px; padding: 12px 34px 12px 10px; background: #fff; border: 2.5px solid var(--sb-ink); border-radius: 18px; box-shadow: 5px 5px 0 var(--sb-ink); animation: tipIn 380ms cubic-bezier(.3,1.4,.5,1) both; }
 .paltip--stage { position: absolute; }
 .paltip--toast { pointer-events: none; position: fixed; left: 50%; bottom: 14px; width: min(94vw, 420px); transform: translateX(-50%); animation: none; }
-.paltip__pal { width: 62px; height: auto; animation: bob 2.4s ease-in-out infinite; }
+.paltip__pal { width: 62px; height: auto; }
 .paltip__lbl { display: block; font: 700 10px/1.2 var(--fun); letter-spacing: .12em; color: var(--sb-blue); }
 .paltip__lbl--why { margin-top: 6px; color: var(--sb-pink); }
 .paltip__what, .paltip__why { margin: 2px 0 0; font: 500 13.5px/1.35 var(--fun); color: var(--sb-ink); }

@@ -33,7 +33,7 @@ export function DeskScene({ s, d, mode, scale, reduced, avail = 0 }: Props) {
           <Calendar s={s} d={d} reduced={reduced} withBoard />
           <LightOverlays s={s} />
           {!reduced && <Motes light={s.light} />}
-          {Object.keys(s.tried).length === 0 && <p className="deskhint"><AssetImage k="SB_blue-pal-pointing" alt="" />{PAL.intro}</p>}
+          {s.hints && Object.keys(s.tried).length === 0 && <p className="deskhint"><AssetImage k="SB_blue-pal-pointing" alt="" />{PAL.intro}</p>}
           {why && <div className="whyslot"><WhyNote key={why.id} s={s} day={why} live={!s.turning} /></div>}
           <span className="stage__attr">{META.attribution.toUpperCase()} · ILLUSTRATED SYNTHESIS · NOT A REAL DIARY</span>
         </div>
@@ -43,9 +43,9 @@ export function DeskScene({ s, d, mode, scale, reduced, avail = 0 }: Props) {
   return (
     <div className={'stack light-' + s.light} style={{ backgroundImage: `url(${env})` }}>
       <LightOverlays s={s} />
-      {Object.keys(s.tried).length === 0 && <p className="deskhint"><AssetImage k="SB_blue-pal-pointing" alt="" />{PAL.intro}</p>}
+      {s.hints && Object.keys(s.tried).length === 0 && <p className="deskhint"><AssetImage k="SB_blue-pal-pointing" alt="" />{PAL.intro}</p>}
       <section className="stack__cal" aria-label="The calendar"><Calendar s={s} d={d} reduced={reduced} withBoard={false} /></section>
-      {why && <div className="whyslot"><WhyNote key={why.id} s={s} day={why} live={!s.turning} autoClose={false} /></div>}
+      {why && <div className="whyslot"><WhyNote key={why.id} s={s} day={why} live={!s.turning} /></div>}
       <section className="stack__desk" aria-label="On the desk">
         <h2 className="stack__h">On the desk</h2>
         <div className="stack__props"><DeskProps s={s} d={d} stage={false} /></div>

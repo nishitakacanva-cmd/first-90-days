@@ -35,7 +35,7 @@ export function Motes({ light }: { light: State['light'] }) {
   return <div className="motes" aria-hidden="true">{ms.map(m => <i key={m.i} style={{ left: m.x + '%', top: m.y + '%', width: m.s, height: m.s, animationDuration: m.d + 's', animationDelay: m.del + 's' }} />)}</div>;
 }
 
-/** The blue pal explains a desk object: what it is, and why it matters. Closes itself after a few seconds. */
+/** Optional, once-per-object explanation. Seen objects stay quiet across visits. */
 export function PalTip({ s, d, style, stage }: { s: State; d: Dispatch<Action>; style?: CSSProperties; stage: boolean }) {
   const tip = s.tip;
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { useEffect, useState, type Dispatch } from 'react';
+import { useState, type Dispatch } from 'react';
 import { COVER, DAYS, META, PAGE_COUNT, PAL, THREADS, dayAt, type Art, type Day } from '../data/content';
 import { didInteract, type Action, type State } from '../state';
 import { AssetImage } from './AssetImage';
@@ -44,17 +44,10 @@ function PageArt({ art, cls = '' }: { art: Art; cls?: string }) {
   );
 }
 
-/** After the visitor uses the day's mechanism, the pink pal says why it matters (then tucks itself away). */
-export function WhyNote({ s, day, live, autoClose = true }: { s: State; day: Day; live: boolean; autoClose?: boolean }) {
+/** The day's explanation opens only when requested and never automatically reopens. */
+export function WhyNote({ s, day, live }: { s: State; day: Day; live: boolean }) {
   const done = live && didInteract(s, day);
   const [open, setOpen] = useState(false);
-  useEffect(() => {
-    if (!done) return;
-    setOpen(true);
-    if (!autoClose) return;
-    const id = window.setTimeout(() => setOpen(false), 9000);
-    return () => window.clearTimeout(id);
-  }, [done, autoClose]);
   if (!done) return null;
   return open ? (
     <div className="whynote" role="status">

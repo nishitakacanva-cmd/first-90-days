@@ -45,7 +45,7 @@ function Prop({ s, d, k, label, chip, onClick, disabled, pressed, stage, extra, 
     <button type="button" className={`obj prop p-${k} ${cls}` + (pressed ? ' on' : '')} style={place(k, s.light, stage)} onClick={() => { onClick(); d({ t: 'tip', k }); }} disabled={disabled} aria-pressed={pressed} aria-label={label}>
       <AssetImage k={LAYOUT[k].k} alt="" />
       {extra}
-      <Beacon show={!s.tried[k] && !disabled} />
+      <Beacon show={s.hints && !s.tried[k] && !disabled} />
       <span className="chip">{chip}</span>
     </button>
   );
@@ -99,7 +99,7 @@ function BadgeProp({ s, d, stage, front, gets, still, dayLabel }: P & { front: s
           <span className="badge__back" aria-hidden="true"><small>GETS YOU INTO</small><b>{gets}</b><small>STILL FINDING</small><b>{still}</b></span>
         </span>
       </span>
-      <Beacon show={!s.tried.badge} />
+      <Beacon show={s.hints && !s.tried.badge} />
       <span className="chip">{s.badgeFlipped ? 'FLIP BACK' : 'FLIP BADGE'}</span>
     </button>
     {s.badgeFlipped && !stage && <p className="badgenote" aria-hidden="true"><small>BADGE · GETS YOU INTO</small>{gets}<small>STILL FINDING</small>{still}</p>}
@@ -121,7 +121,7 @@ function MugProp({ s, d, stage }: P) {
         aria-label={s.mugMoved ? 'Put the mug back' : 'Move the mug: there is something written underneath'}>
         <AssetImage k={LAYOUT.mug.k} alt="" />
         {stage && <Steam />}
-        <Beacon show={!s.tried.mug} />
+        <Beacon show={s.hints && !s.tried.mug} />
         <span className="chip">{s.mugMoved ? 'PUT MUG BACK' : 'MOVE MUG'}</span>
       </button>
     </>

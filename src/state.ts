@@ -41,6 +41,7 @@ export type State = {
   tip: null | { k: PropKey; n: number };
   tried: Partial<Record<PropKey, true>>;
   sound: boolean;
+  hints: boolean;
   burst: number;
 };
 
@@ -49,7 +50,7 @@ export const initial: State = {
   mugMoved: false, badgeFlipped: false, panel: null, marks: {}, clips: {}, notes: {},
   letterOpen: false, orgFlap: false, orgSel: null, slipsPulled: 0, slipSort: {}, order: [], orderDone: false,
   draftOpen: false, draftChoice: null, draftRewritten: false, brief: 0, learn: {}, agendaFolds: 0, filed: {},
-  tab: 'idea', keep: [], sheets: 0, announce: '', tip: null, tried: {}, sound: true, burst: 0
+  tab: 'idea', keep: [], sheets: 0, announce: '', tip: null, tried: {}, sound: true, hints: false, burst: 0
 };
 
 export type Action =
@@ -73,7 +74,7 @@ export type Action =
   | { t: 'tab'; id: string } | { t: 'keep'; item: string }
   | { t: 'sheets'; v: number }
   | { t: 'finding' } | { t: 'backToDesk' } | { t: 'reset' }
-  | { t: 'tip'; k: PropKey } | { t: 'tipClose' } | { t: 'sound' };
+  | { t: 'tip'; k: PropKey } | { t: 'tipClose' } | { t: 'sound' } | { t: 'hints' };
 
 const clampPage = (n: number) => Math.max(0, Math.min(PAGE_COUNT - 1, n));
 const curId = (s: State) => dayAt(s.page)?.id ?? null;
@@ -147,9 +148,10 @@ export function reducer(s: State, a: Action): State {
     case 'sheets': return { ...s, sheets: Math.max(0, Math.min(100, a.v)) };
     case 'finding': return { ...s, phase: 'finding', panel: null, turning: null, burst: s.burst + 1, announce: 'The offer was day zero. The understanding came later.' };
     case 'backToDesk': return { ...s, phase: 'desk' };
-    case 'reset': return { ...initial, sound: s.sound, announce: 'Calendar reset to the cover' };
-    case 'tip': return { ...s, tip: { k: a.k, n: (s.tip?.n ?? 0) + 1 }, tried: { ...s.tried, [a.k]: true } };
+    case 'reset': return { ...initial, sound: s.sound, hints: s.hints, tried: s.tried, announce: 'Calendar reset to the cover' };
+    case 'tip': return !s.hints || s.tried[a.k] ? s : { ...s, tip: { k: a.k, n: (s.tip?.n ?? 0) + 1 }, tried: { ...s.tried, [a.k]: true } };
     case 'tipClose': return { ...s, tip: null };
+    case 'hints': return { ...s, hints: !s.hints, tip: null };
     case 'sound': return { ...s, sound: !s.sound, announce: s.sound ? 'Sound off' : 'Sound on' };
   }
 }
