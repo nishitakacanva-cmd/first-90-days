@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -15,10 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  package:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -26,5 +24,30 @@ jobs:
       - uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist
+      - name: Wait for GitHub to index the uploaded artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module <<'JS'
+          const url = `https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}/artifacts`;
+          for (let attempt = 0; attempt < 20; attempt++) {
+            const response = await fetch(url, {headers: {Authorization: `Bearer ${process.env.GH_TOKEN}`, Accept: 'application/vnd.github+json'}});
+            if (!response.ok) throw new Error(`Artifact lookup failed: ${response.status}`);
+            const result = await response.json();
+            if (result.artifacts?.some(item => item.name === 'github-pages' && !item.expired)) {
+              console.log('Pages artifact is available.');
+              process.exit(0);
+            }
+            await new Promise(resolve => setTimeout(resolve, 3000));
+          }
+          throw new Error('Uploaded artifact is not yet available through the GitHub API.');
+          JS
+  deploy:
+    needs: package
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
