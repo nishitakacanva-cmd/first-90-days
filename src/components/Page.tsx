@@ -1,6 +1,7 @@
-import type { Dispatch } from 'react';
-import { COVER, DAYS, META, PAGE_COUNT, THREADS, dayAt } from '../data/content';
-import type { Action, State } from '../state';
+import { useEffect, useState, type Dispatch } from 'react';
+import { COVER, DAYS, META, PAGE_COUNT, PAL, THREADS, dayAt, type Art, type Day } from '../data/content';
+import { didInteract, type Action, type State } from '../state';
+import { AssetImage } from './AssetImage';
 import { Interaction } from './Interactions';
 
 /** Punched binding holes, positioned to match the holes in FD_PROP_01 (board x 36…435 at 1.3×, measured). */
@@ -33,6 +34,41 @@ function PencilRing() {
 
 type PP = { s: State; d: Dispatch<Action>; page: number; live: boolean };
 
+/** Studio Bridge illustration printed on the page: a character and a sticker, popping in when the page arrives. */
+function PageArt({ art, cls = '' }: { art: Art; cls?: string }) {
+  return (
+    <div className={'part ' + cls} aria-hidden="true">
+      <AssetImage k={art.sticker} className="part__st" alt="" />
+      <AssetImage k={art.char} className="part__ch" alt="" />
+    </div>
+  );
+}
+
+/** After the visitor uses the day's mechanism, the pink pal says why it matters (then tucks itself away). */
+export function WhyNote({ s, day, live, autoClose = true }: { s: State; day: Day; live: boolean; autoClose?: boolean }) {
+  const done = live && didInteract(s, day);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (!done) return;
+    setOpen(true);
+    if (!autoClose) return;
+    const id = window.setTimeout(() => setOpen(false), 9000);
+    return () => window.clearTimeout(id);
+  }, [done, autoClose]);
+  if (!done) return null;
+  return open ? (
+    <div className="whynote" role="status">
+      <AssetImage k="SB_pink-pal-thinking" className="whynote__pal" alt="" />
+      <p><b>{PAL.whyLabel}</b>{day.why}</p>
+      <button type="button" className="whynote__x" onClick={() => setOpen(false)} aria-label="Hide why it matters">×</button>
+    </div>
+  ) : (
+    <button type="button" className="whybtn" onClick={() => setOpen(true)} aria-label={`Why it matters: ${day.why}`}>
+      <AssetImage k="SB_pink-pal-thinking" alt="" /><span>Why it matters</span>
+    </button>
+  );
+}
+
 export function CalendarPage({ s, d, page, live }: PP) {
   const day = dayAt(page);
   const t = live ? 0 : -1;
@@ -50,11 +86,13 @@ export function CalendarPage({ s, d, page, live }: PP) {
     return (
       <article className="cpage cpage--cover" aria-label="Cover: The First 90 Days">
         <Holes />
+        <PageArt art={COVER.art} cls="part--cover" />
+        <AssetImage k="SB_sb-badge" className="cover__sb" alt="Studio Bridge: design, learn, work" />
         <div className="cpage__in">
           <header className="cpage__top"><span>{META.attribution.toUpperCase()}</span><span>DAY 00 — 90</span></header>
-          <h1 className="cover__title">THE FIRST<br />90 DAYS</h1>
+          <h1 className="cover__title">THE FIRST<br /><span className="cover__hl">90 DAYS</span></h1>
           <p className="cover__sub">{META.subtitle}</p>
-          <div className="cover__grid" aria-hidden="true">{Array.from({ length: 91 }, (_, i) => <i key={i} className={DAYS.some(x => x.n === i) ? 'on' : ''} />)}</div>
+          <div className="cover__grid" aria-hidden="true">{Array.from({ length: 91 }, (_, i) => { const hit = DAYS.find(x => x.n === i); return <i key={i} className={hit ? 'on' : ''} style={hit ? { background: THREADS[hit.threads[0]].color, animationDelay: (i * 18) + 'ms' } : undefined} />; })}</div>
           <p className="cover__note"><b>Research note.</b> {META.researchNote}</p>
           <ul className="cover__how">{COVER.how.map(h => <li key={h}>{h}</li>)}</ul>
           <button type="button" className="ix-btn ix-btn--go cover__cta" tabIndex={t} onClick={() => d({ t: 'turn', to: 1 })}>{COVER.cta} →</button>
@@ -65,13 +103,15 @@ export function CalendarPage({ s, d, page, live }: PP) {
   }
   const notes = s.notes[day.id] ?? [];
   return (
-    <article className={'cpage cpage--day ix-' + day.interaction.type} aria-label={`Day ${day.label}: ${day.headline}`} data-day={day.id}>
+    <article className={'cpage cpage--day has-art ix-' + day.interaction.type} aria-label={`Day ${day.label}: ${day.headline}`} data-day={day.id} style={{ ['--tc' as string]: THREADS[day.threads[0]].color }}>
       <Holes />
+      <span className="tape" aria-hidden="true" />
+      <PageArt art={day.art} cls={'part--' + day.id} />
       {s.clips[day.id] && <BinderClip />}
       <div className="cpage__in">
         <header className="cpage__top"><span>THE FIRST 90 DAYS</span><span className="mono">DAY {day.label}</span></header>
         <div className="cpage__head">
-          <div className="cpage__num" aria-hidden="true">{day.label}{s.marks[day.id] && <PencilRing />}</div>
+          <div className="cpage__num" aria-hidden="true"><span>{day.label}</span>{s.marks[day.id] && <PencilRing />}</div>
           <div className="cpage__titles">
             <p className="cpage__theme" style={{ color: THREADS[day.threads[0]].color }}>{day.theme.toUpperCase()}</p>
             <h2 className="cpage__h">{day.headline}</h2>

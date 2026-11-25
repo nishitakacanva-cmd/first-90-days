@@ -173,7 +173,8 @@ export function Finding({ s, d }: { s: State; d: Dispatch<Action> }) {
     <div className="finding" role="dialog" aria-modal="true" aria-labelledby="finding-h">
       <div className="finding__card">
         <div className="finding__top">
-          <div>
+          <div className="finding__lead">
+            <AssetImage k="SB_pink-pal-celebrate" className="finding__pal" alt="" />
             <span className="attribution">{META.attribution}</span>
             <h1 id="finding-h">{FINDING.headline}</h1>
             <p className="finding__intro">{FINDING.intro}</p>

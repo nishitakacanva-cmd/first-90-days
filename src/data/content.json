@@ -13,44 +13,49 @@
     "role": {
       "label": "Understanding the role",
       "short": "ROLE",
-      "color": "#B5573B",
+      "color": "#2558FF",
       "cmyk": [
+        0.85,
+        0.65,
         0,
-        0.62,
-        0.72,
-        0.25
+        0
       ]
     },
     "team": {
       "label": "The team",
       "short": "TEAM",
-      "color": "#5F7F57",
+      "color": "#0E8F76",
       "cmyk": [
-        0.35,
+        0.85,
         0,
-        0.42,
-        0.45
+        0.55,
+        0.1
       ]
     },
     "self": {
       "label": "Your preferences",
       "short": "YOU",
-      "color": "#B8862A",
+      "color": "#E0218A",
       "cmyk": [
         0,
-        0.3,
-        0.8,
-        0.25
+        0.88,
+        0.1,
+        0
       ]
     }
   },
   "cover": {
     "how": [
-      "Turn a page with the corner tab, the arrow keys or a swipe.",
-      "Things on the desk move too: the mug, the badge, the sketchbook, the pencil.",
+      "Turn the page with the corner tab, the arrow keys or a swipe.",
+      "Everything on the desk does something. Tap it and a pal will tell you what it means.",
       "Every day has two sides. Switch between the new designer and the team."
     ],
-    "cta": "Turn to Day 00"
+    "cta": "Turn to Day 00",
+    "art": {
+      "char": "SB_aanya-cast",
+      "sticker": "SB_st-portal",
+      "alt": "New joiner standing with a pencil, beside a door to a staircase"
+    }
   },
   "days": [
     {
@@ -88,7 +93,13 @@
       "print": {
         "prompt": "Write down three things the letter didn’t tell you.",
         "lines": 3
-      }
+      },
+      "art": {
+        "char": "SB_aanya-celebrate",
+        "sticker": "SB_st-sparkle",
+        "alt": "New joiner, celebrating"
+      },
+      "why": "Accepting an offer settles the job title, not the job. The questions in the margin are normal, and worth asking before Monday."
     },
     {
       "id": "d01",
@@ -159,7 +170,13 @@
       "print": {
         "prompt": "Draw the chart you were given. Then draw who you actually ask.",
         "lines": 0
-      }
+      },
+      "art": {
+        "char": "SB_aanya-wave",
+        "sticker": "SB_st-chat",
+        "alt": "New joiner, waving hello"
+      },
+      "why": "Every team has an unwritten chart. Finding out who knows what is part of joining, not a sign you are behind."
     },
     {
       "id": "d03",
@@ -201,7 +218,13 @@
       "print": {
         "prompt": "List this week’s tasks. Tick the ones the job description named.",
         "lines": 5
-      }
+      },
+      "art": {
+        "char": "SB_aanya-neutral",
+        "sticker": "SB_task-production",
+        "alt": "New joiner holding a sketchbook"
+      },
+      "why": "A lot of early work is production. It is how newcomers learn a studio’s systems, so ask what each task is meant to teach."
     },
     {
       "id": "d07",
@@ -250,7 +273,13 @@
       "print": {
         "prompt": "Three comments, one file. Number them, then write the question you’d ask.",
         "lines": 2
-      }
+      },
+      "art": {
+        "char": "SB_arjun-explaining",
+        "sticker": "SB_task-feedback",
+        "alt": "Design lead explaining"
+      },
+      "why": "Conflicting notes usually come from different responsibilities. Asking which matters more is a good question, not a weakness."
     },
     {
       "id": "d14",
@@ -286,7 +315,13 @@
       "print": {
         "prompt": "Write the question you’ve been putting off. Cross out the apology.",
         "lines": 2
-      }
+      },
+      "art": {
+        "char": "SB_aanya-thinking",
+        "sticker": "SB_st-chat",
+        "alt": "New joiner, thinking"
+      },
+      "why": "Newcomers who seek information and feedback adjust faster (Bauer 2010). A short, specific question gets a quick answer."
     },
     {
       "id": "d21",
@@ -345,7 +380,13 @@
       "print": {
         "prompt": "Original brief / revised brief. List what the change touches.",
         "lines": 4
-      }
+      },
+      "art": {
+        "char": "SB_kabir-tablet",
+        "sticker": "SB_st-arrow",
+        "alt": "Colleague reading a tablet"
+      },
+      "why": "Briefs change because clients learn too. Spotting what a change touches early protects the work and the deadline."
     },
     {
       "id": "d30",
@@ -386,7 +427,13 @@
       "print": {
         "prompt": "What did you do this month? Circle what taught you something.",
         "lines": 5
-      }
+      },
+      "art": {
+        "char": "SB_aanya-pointing",
+        "sticker": "SB_task-ideation",
+        "alt": "New joiner pointing at an idea"
+      },
+      "why": "Busy is not the same as learning. Naming what taught you something gives you something to ask for."
     },
     {
       "id": "d45",
@@ -438,7 +485,13 @@
       "print": {
         "prompt": "Write the agenda you’d want for your first check-in.",
         "lines": 5
-      }
+      },
+      "art": {
+        "char": "SB_arjun-relaxed",
+        "sticker": "SB_st-calendar",
+        "alt": "Design lead, relaxed"
+      },
+      "why": "An agenda turns a vague check-in into a two-way conversation, and it carries what you learned into it."
     },
     {
       "id": "d60",
@@ -479,7 +532,13 @@
       "print": {
         "prompt": "Two columns: what you could show, and what the team would remember.",
         "lines": 4
-      }
+      },
+      "art": {
+        "char": "SB_rhea-presenting-group",
+        "sticker": "SB_st-portfolio",
+        "alt": "Senior designer presenting to the team"
+      },
+      "why": "Collaboration rarely shows up in a portfolio, but it is what references and future teams remember."
     },
     {
       "id": "d75",
@@ -532,7 +591,13 @@
       "print": {
         "prompt": "The idea of the job / the work as it is / what you’d keep.",
         "lines": 4
-      }
+      },
+      "art": {
+        "char": "SB_rhea-sketching",
+        "sticker": "SB_task-digital",
+        "alt": "Designer sketching"
+      },
+      "why": "Preferences change once the work is real. That is useful information for your next step, not a failure."
     },
     {
       "id": "d85",
@@ -577,7 +642,13 @@
       "print": {
         "prompt": "Two lists. Where do they overlap?",
         "lines": 4
-      }
+      },
+      "art": {
+        "char": "SB_pals-working-together",
+        "sticker": "SB_st-heart",
+        "alt": "Two Studio Bridge pals working together"
+      },
+      "why": "Adjustment goes both ways. The overlap is what both sides want more of."
     },
     {
       "id": "d90",
@@ -607,7 +678,13 @@
       "print": {
         "prompt": "Mark the days that changed how you saw the job.",
         "lines": 0
-      }
+      },
+      "art": {
+        "char": "SB_aanya-walking",
+        "sticker": "SB_st-rainbow",
+        "alt": "New joiner walking on"
+      },
+      "why": "Understanding the job arrived in pieces, long after the offer. The map shows the ones you opened."
     }
   ],
   "badge": [
@@ -667,5 +744,72 @@
     "Names, roles, letters, briefs, comments, drafts and replies are invented composites.",
     "No interview quotations appear here; themes are paraphrased.",
     "Nothing is scored. Your marks, notes and choices stay in this browser tab and are cleared when you close or reset it."
-  ]
+  ],
+  "props": {
+    "mug": {
+      "title": "The mug",
+      "what": "Move it to find the question written underneath.",
+      "why": "Each day has a question worth asking out loud. Newcomers often hold back; this one is ready for you."
+    },
+    "badge": {
+      "title": "Your access badge",
+      "what": "Flip it to see what it opens on this day, and what you are still working out.",
+      "why": "Access grows with trust. It changes as you turn the pages: visitor, new joiner, team member."
+    },
+    "pencil": {
+      "title": "The pencil",
+      "what": "Circle this day.",
+      "why": "Circle the days that changed how you saw the job. Your circles appear on the Day 90 map."
+    },
+    "clips": {
+      "title": "Binder clips",
+      "what": "Clip this page to bookmark it.",
+      "why": "Clipped days are flagged in the day index and on the final map, so you can find them again."
+    },
+    "sticky": {
+      "title": "Sticky notes",
+      "what": "Write a note on today’s page.",
+      "why": "Your notes travel to the sketchbook and the final summary. They clear when you close the tab."
+    },
+    "sketch": {
+      "title": "The sketchbook",
+      "what": "Your notes to self: one line from every day you have opened, plus your own notes.",
+      "why": "It is the running record you would keep in a real first job."
+    },
+    "sheets": {
+      "title": "Research notes",
+      "what": "Opens the evidence drawer for this page.",
+      "why": "The calendar is a synthesis of interviews, not one person’s diary. Check what each page rests on here."
+    },
+    "pile": {
+      "title": "The day index",
+      "what": "Jump to any of the twelve days.",
+      "why": "You don’t have to read in order. Your marks, clips and notes are shown next to each day."
+    },
+    "envelope": {
+      "title": "The offer letter",
+      "what": "Opens Day 00 and unfolds the letter.",
+      "why": "The offer is where the job starts, not where you find out what it is."
+    },
+    "ruler": {
+      "title": "The transparent ruler",
+      "what": "Lays the revised brief over the original on Day 21.",
+      "why": "Spotting what a change touches is part of the job."
+    },
+    "light": {
+      "title": "The light",
+      "what": "Changes the time of day on the desk.",
+      "why": "Just atmosphere: morning, afternoon, evening, or the desk lamp after hours."
+    },
+    "sound": {
+      "title": "Sound",
+      "what": "Paper, pencil and mug sounds.",
+      "why": "Made in your browser; nothing is downloaded or recorded."
+    }
+  },
+  "pal": {
+    "tipLabel": "WHAT THIS IS",
+    "whyLabel": "WHY IT MATTERS",
+    "intro": "Tap anything on the desk. I’ll tell you what it’s for."
+  }
 }

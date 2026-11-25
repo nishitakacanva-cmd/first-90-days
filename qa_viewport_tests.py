@@ -4,8 +4,11 @@ from playwright.async_api import async_playwright
 URL='http://localhost:8767/'
 async def act(pg, sel, touch):
     el=pg.locator(sel).first; await el.scroll_into_view_if_needed()
-    if touch: await el.tap()
-    else: await el.click()
+    try:
+        if touch: await el.tap(timeout=8000)
+        else: await el.click(timeout=8000)
+    except Exception as e:
+        print('ACT FAILED', sel, str(e).split('\n')[-3:]); raise
 async def run(b,w,h,tag,touch=False):
     ctx=await b.new_context(viewport={'width':w,'height':h}, has_touch=touch, is_mobile=touch and w<800)
     pg=await ctx.new_page(); errs=[]; pg.on('pageerror', lambda e: errs.append(str(e)))

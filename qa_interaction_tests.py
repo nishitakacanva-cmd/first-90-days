@@ -252,6 +252,62 @@ with sync_playwright() as p:
     pg.wait_for_timeout(320); check('DAY 00' in pg.inner_text('.topbar__where') and pg.locator('.pageslot--turn').count() == 0, 'reduced motion: turn completes in ~200 ms')
     ctx.close()
 
+    # --- v1.1: pal tips, why-notes, illustrations, sound, confetti, beacons ---
+    ctx = b.new_context(viewport={'width': 1440, 'height': 900}); pg = ctx.new_page(); errs2 = []
+    pg.on('pageerror', lambda e: errs2.append(str(e)))
+    pg.add_init_script("""(() => { window.__nodes = 0; const P = (window.AudioContext||window.webkitAudioContext).prototype;
+      for (const m of ['createOscillator','createBufferSource']) { const o = P[m]; P[m] = function(...a){ window.__nodes++; return o.apply(this, a); }; } })();""")
+    pg.goto(URL); pg.wait_for_timeout(900)
+    check(pg.locator('.deskhint').count() == 1, 'cover: the blue pal invites you to tap the desk')
+    check(pg.locator('.cpage--cover .part__ch').count() == 1 and pg.locator('.cover__sb').count() == 1, 'cover: Studio Bridge character and badge')
+    nb = pg.locator('.beacon').count()
+    check(nb == 7, f'every desk object usable on the cover carries a beacon ({nb})')
+    tips = {'p-mug': 'mug', 'p-badge': 'badge', 'p-sketch': 'sketch', 'p-pile': 'pile', 'p-sheets': 'sheets', 'p-ruler': 'ruler', 'p-envelope': 'envelope'}
+    ok_tips = []
+    for cls, key in tips.items():
+        if pg.locator('dialog[open]').count(): pg.keyboard.press('Escape'); pg.wait_for_timeout(150)
+        if pg.locator('.drawer').count(): pg.click('.drawer .xbtn')
+        if 'DAY' in pg.inner_text('.topbar__where') and key not in ('envelope', 'ruler'): pass
+        pg.click('.' + cls, force=True); pg.wait_for_timeout(250)
+        t = norm(pg.inner_text('.paltip')) if pg.locator('.paltip').count() else ''
+        ok_tips.append(norm(C['props'][key]['what']) in t and norm(C['props'][key]['why']) in t)
+        if pg.locator('dialog[open]').count(): pg.keyboard.press('Escape'); pg.wait_for_timeout(150)
+        if pg.locator('.drawer').count(): pg.click('.drawer .xbtn')
+    check(all(ok_tips), f'every desk object explains what it is and why it matters ({sum(ok_tips)}/{len(ok_tips)})')
+    check(pg.locator('.deskhint').count() == 0 and pg.locator('.beacon').count() < nb, 'trying objects clears the invitation and their beacons')
+    pg.keyboard.press('Escape'); pg.wait_for_timeout(150)
+    check(pg.locator('.paltip').count() == 0, 'Esc closes the pal tip')
+    pg.click('.p-pencil', force=True) if pg.locator('.p-pencil:not([disabled])').count() else None
+    pg.click('.tbtn:has-text("Reset")'); pg.wait_for_timeout(300)
+    pg.keyboard.press('ArrowRight'); pg.wait_for_timeout(950)
+    check(all(pg.locator(f'.cpage--day .part__ch').count() == 1 for _ in [0]) and pg.locator('.cpage--day .part__st').count() == 1, 'Day 00 carries a character and a sticker')
+    n0 = pg.evaluate('window.__nodes')
+    pg.click('text=Unfold the letter'); pg.wait_for_timeout(300)
+    check(pg.locator('.confetti i').count() >= 50, 'unfolding the offer letter fires confetti')
+    check(norm(C['days'][0]['why']) in norm(pg.inner_text('.whyslot')), 'Day 00: the pink pal explains why it matters after you use the page')
+    n1 = pg.evaluate('window.__nodes')
+    check(n1 > n0, f'sound plays on interaction ({n1 - n0} audio nodes)')
+    pg.click('.whynote__x'); check(pg.locator('.whybtn').count() == 1, 'the why-note tucks away into a “Why it matters” button')
+    pg.click('.whybtn'); check(pg.locator('.whynote').count() == 1, 'and opens again')
+    pg.click('.tbtn--icon'); check(pg.get_attribute('.tbtn--icon', 'aria-pressed') == 'false', 'sound toggle turns sound off')
+    n2 = pg.evaluate('window.__nodes'); pg.click('text=Fold it back up'); pg.click('.p-mug'); pg.wait_for_timeout(200)
+    check(pg.evaluate('window.__nodes') == n2, 'with sound off, nothing plays')
+    pg.click('.tbtn--icon')
+    arts = []
+    for i in range(12):
+        arts.append(pg.locator('.pageslot:not(.pageslot--turn) .part__ch').count() == 1)
+        pg.keyboard.press('ArrowRight'); pg.wait_for_timeout(900)
+    check(all(arts), f'all twelve days carry a Studio Bridge illustration ({sum(arts)}/12)')
+    check(pg.locator('.steam').count() == 1 and pg.locator('.motes i').count() > 0, 'desk life: mug steam and drifting dust in daylight')
+    pg.click('text=See what came later'); pg.wait_for_timeout(400)
+    check(pg.locator('.finding__pal').count() == 1 and pg.locator('.confetti i').count() >= 50, 'the finding celebrates (pal + confetti)')
+    check(not errs2, f'no errors with tips, sound and motion ({errs2[:2]})')
+    ctx.close()
+    ctx = b.new_context(viewport={'width': 1440, 'height': 900}, reduced_motion='reduce'); pg = ctx.new_page(); pg.goto(URL); pg.wait_for_timeout(500)
+    pg.keyboard.press('ArrowRight'); pg.wait_for_timeout(400); pg.click('text=Unfold the letter'); pg.wait_for_timeout(200)
+    check(pg.locator('.confetti').count() == 0 and pg.locator('.motes').count() == 0 and not pg.locator('.steam').is_visible() and pg.locator('.whynote').count() == 1, 'reduced motion: no confetti, dust or steam; tips and notes still appear')
+    ctx.close()
+
     # --- missing assets fall back cleanly ---
     ctx = b.new_context(viewport={'width': 1440, 'height': 900}); pg = ctx.new_page()
     pg.route(re.compile(r'.*(FD_PROP_02_CeramicMug|FD_ENV_01_OverheadDesk|FD_PROP_01_RingBound).*'), lambda r: r.abort())

@@ -18,8 +18,10 @@ export type Interaction =
   | { type: 'sheets'; verb: string; a: { title: string; items: string[] }; b: { title: string; items: string[] }; overlap: string }
   | { type: 'map'; verb: string; cta: string };
 
+export type Art = { char: string; sticker: string; alt: string };
+export type PropKey = 'mug' | 'badge' | 'pencil' | 'clips' | 'sticky' | 'sketch' | 'sheets' | 'pile' | 'envelope' | 'ruler' | 'light' | 'sound';
 export type Day = {
-  id: string; n: number; label: string; headline: string; theme: string; threads: ThreadKey[];
+  id: string; n: number; label: string; headline: string; theme: string; threads: ThreadKey[]; art: Art; why: string;
   student: string; team: string; slip: string; mug: string; sources: SourceKey[]; basis: string;
   interaction: Interaction; print: { prompt: string; lines: number };
 };
@@ -28,7 +30,9 @@ export type Source = { title: string; publisher: string; url?: string; note: str
 const C = raw as unknown as {
   meta: Record<'title' | 'subtitle' | 'researchNote' | 'attribution' | 'composite' | 'notLongitudinal' | 'studio' | 'role', string>;
   threads: Record<ThreadKey, { label: string; short: string; color: string; cmyk: number[] }>;
-  cover: { how: string[]; cta: string };
+  cover: { how: string[]; cta: string; art: Art };
+  props: Record<PropKey, { title: string; what: string; why: string }>;
+  pal: { tipLabel: string; whyLabel: string; intro: string };
   days: Day[];
   badge: { upTo: number; front: string; gets: string; still: string }[];
   finding: { headline: string; intro: string; notOpened: string; close: string };
@@ -40,6 +44,8 @@ export const META = C.meta;
 export const THREADS = C.threads;
 export const THREAD_KEYS: ThreadKey[] = ['role', 'team', 'self'];
 export const COVER = C.cover;
+export const PROPS = C.props;
+export const PAL = C.pal;
 export const DAYS = C.days;
 export const BADGE = C.badge;
 export const FINDING = C.finding;

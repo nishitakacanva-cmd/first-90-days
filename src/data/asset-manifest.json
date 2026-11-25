@@ -186,5 +186,309 @@
   "alpha": true,
   "derivedFrom": "FD_PROP_01_RingBoundCalendarBase_v01",
   "derivation": "Cropped to the board and page block (box 14,66,500,546). The cut-out rings above the board were broken and carried speckle noise, so the wire binding is redrawn in SVG; the hard black baked shadow was removed and replaced with a live CSS shadow."
+ },
+ "SB_aanya-cast": {
+  "path": "assets/sb/aanya-cast.png",
+  "w": 183,
+  "h": 360,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/characters/aanya/aanya-cast.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264360px tall for the calendar pages."
+ },
+ "SB_aanya-celebrate": {
+  "path": "assets/sb/aanya-celebrate.png",
+  "w": 173,
+  "h": 360,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/characters/aanya/aanya-celebrate.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264360px tall for the calendar pages."
+ },
+ "SB_aanya-wave": {
+  "path": "assets/sb/aanya-wave.png",
+  "w": 204,
+  "h": 360,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/characters/aanya/aanya-wave.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264360px tall for the calendar pages."
+ },
+ "SB_aanya-neutral": {
+  "path": "assets/sb/aanya-neutral.png",
+  "w": 174,
+  "h": 360,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/characters/aanya/aanya-neutral.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264360px tall for the calendar pages."
+ },
+ "SB_aanya-thinking": {
+  "path": "assets/sb/aanya-thinking.png",
+  "w": 158,
+  "h": 360,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/characters/aanya/aanya-thinking.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264360px tall for the calendar pages."
+ },
+ "SB_aanya-pointing": {
+  "path": "assets/sb/aanya-pointing.png",
+  "w": 212,
+  "h": 360,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/characters/aanya/aanya-pointing.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264360px tall for the calendar pages."
+ },
+ "SB_aanya-walking": {
+  "path": "assets/sb/aanya-walking.png",
+  "w": 209,
+  "h": 360,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/characters/aanya/aanya-walking.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264360px tall for the calendar pages."
+ },
+ "SB_arjun-explaining": {
+  "path": "assets/sb/arjun-explaining.png",
+  "w": 200,
+  "h": 360,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/characters/arjun/arjun-explaining.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264360px tall for the calendar pages."
+ },
+ "SB_arjun-relaxed": {
+  "path": "assets/sb/arjun-relaxed.png",
+  "w": 170,
+  "h": 360,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/characters/arjun/arjun-relaxed.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264360px tall for the calendar pages."
+ },
+ "SB_kabir-tablet": {
+  "path": "assets/sb/kabir-tablet.png",
+  "w": 163,
+  "h": 360,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/characters/kabir/kabir-tablet.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264360px tall for the calendar pages."
+ },
+ "SB_rhea-presenting-group": {
+  "path": "assets/sb/rhea-presenting-group.png",
+  "w": 279,
+  "h": 360,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/characters/rhea/rhea-presenting-group.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264360px tall for the calendar pages."
+ },
+ "SB_rhea-sketching": {
+  "path": "assets/sb/rhea-sketching.png",
+  "w": 241,
+  "h": 360,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/characters/rhea/rhea-sketching.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264360px tall for the calendar pages."
+ },
+ "SB_pals-working-together": {
+  "path": "assets/sb/pals-working-together.png",
+  "w": 405,
+  "h": 300,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/helpers/scenes/pals-working-together.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264300px tall for the calendar pages."
+ },
+ "SB_blue-pal-pointing": {
+  "path": "assets/sb/blue-pal-pointing.png",
+  "w": 249,
+  "h": 200,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/helpers/blue-pal/blue-pal-pointing.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264200px tall for the calendar pages."
+ },
+ "SB_pink-pal-thinking": {
+  "path": "assets/sb/pink-pal-thinking.png",
+  "w": 189,
+  "h": 200,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/helpers/pink-pal/pink-pal-thinking.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264200px tall for the calendar pages."
+ },
+ "SB_pink-pal-celebrate": {
+  "path": "assets/sb/pink-pal-celebrate.png",
+  "w": 257,
+  "h": 233,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/helpers/pink-pal/pink-pal-celebrate.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264240px tall for the calendar pages."
+ },
+ "SB_blue-pal-sending": {
+  "path": "assets/sb/blue-pal-sending.png",
+  "w": 219,
+  "h": 200,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/helpers/blue-pal/blue-pal-sending.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264200px tall for the calendar pages."
+ },
+ "SB_st-sparkle": {
+  "path": "assets/sb/st-sparkle.png",
+  "w": 131,
+  "h": 125,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/stickers/sparkle.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264140px tall for the calendar pages."
+ },
+ "SB_st-chat": {
+  "path": "assets/sb/st-chat.png",
+  "w": 168,
+  "h": 160,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/stickers/chat-bubble.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264160px tall for the calendar pages."
+ },
+ "SB_st-arrow": {
+  "path": "assets/sb/st-arrow.png",
+  "w": 139,
+  "h": 117,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/stickers/arrow.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264140px tall for the calendar pages."
+ },
+ "SB_st-calendar": {
+  "path": "assets/sb/st-calendar.png",
+  "w": 157,
+  "h": 147,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/stickers/calendar.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264160px tall for the calendar pages."
+ },
+ "SB_st-portfolio": {
+  "path": "assets/sb/st-portfolio.png",
+  "w": 344,
+  "h": 120,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/stickers/portfolio-card.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264120px tall for the calendar pages."
+ },
+ "SB_st-heart": {
+  "path": "assets/sb/st-heart.png",
+  "w": 137,
+  "h": 136,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/stickers/heart.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264140px tall for the calendar pages."
+ },
+ "SB_st-portal": {
+  "path": "assets/sb/st-portal.png",
+  "w": 163,
+  "h": 200,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/stickers/portal-door.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264200px tall for the calendar pages."
+ },
+ "SB_st-rainbow": {
+  "path": "assets/sb/st-rainbow.png",
+  "w": 249,
+  "h": 150,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/stickers/rainbow.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264150px tall for the calendar pages."
+ },
+ "SB_st-sticky": {
+  "path": "assets/sb/st-sticky.png",
+  "w": 188,
+  "h": 150,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/stickers/sticky-note.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264150px tall for the calendar pages."
+ },
+ "SB_st-binoculars": {
+  "path": "assets/sb/st-binoculars.png",
+  "w": 168,
+  "h": 150,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/stickers/binoculars.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264150px tall for the calendar pages."
+ },
+ "SB_st-mentor": {
+  "path": "assets/sb/st-mentor.png",
+  "w": 211,
+  "h": 110,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/stickers/mentor-badge.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264110px tall for the calendar pages."
+ },
+ "SB_task-production": {
+  "path": "assets/sb/task-production.png",
+  "w": 214,
+  "h": 220,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/tasks/production-exporting.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264220px tall for the calendar pages."
+ },
+ "SB_task-feedback": {
+  "path": "assets/sb/task-feedback.png",
+  "w": 208,
+  "h": 220,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/tasks/feedback-revisions.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264220px tall for the calendar pages."
+ },
+ "SB_task-ideation": {
+  "path": "assets/sb/task-ideation.png",
+  "w": 232,
+  "h": 220,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/tasks/creative-ideation.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264220px tall for the calendar pages."
+ },
+ "SB_task-journey": {
+  "path": "assets/sb/task-journey.png",
+  "w": 260,
+  "h": 200,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/tasks/journey-mapping.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264200px tall for the calendar pages."
+ },
+ "SB_task-digital": {
+  "path": "assets/sb/task-digital.png",
+  "w": 233,
+  "h": 220,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/tasks/digital-illustration.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264220px tall for the calendar pages."
+ },
+ "SB_sb-badge": {
+  "path": "assets/sb/sb-badge.png",
+  "w": 219,
+  "h": 220,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/brand/studiobridge-badge-yellow.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u2264220px tall for the calendar pages."
+ },
+ "SB_sb-mark": {
+  "path": "assets/sb/sb-mark.png",
+  "w": 93,
+  "h": 96,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/brand/studiobridge-mark.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u226496px tall for the calendar pages."
+ },
+ "SB_deco-sparkle-pink": {
+  "path": "assets/sb/deco-sparkle-pink.png",
+  "w": 48,
+  "h": 51,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/decor/sparkle-pink.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u226480px tall for the calendar pages."
+ },
+ "SB_deco-sparkle-yellow": {
+  "path": "assets/sb/deco-sparkle-yellow.png",
+  "w": 51,
+  "h": 53,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/decor/sparkle-yellow.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u226480px tall for the calendar pages."
+ },
+ "SB_deco-cloud-teal": {
+  "path": "assets/sb/deco-cloud-teal.png",
+  "w": 92,
+  "h": 52,
+  "alpha": true,
+  "derivedFrom": "studiobridge/packages/brand/public/assets/graphics/decor/cloud-teal.png",
+  "derivation": "Studio Bridge brand package illustration, trimmed to its bounding box and resized to \u226490px tall for the calendar pages."
  }
 }

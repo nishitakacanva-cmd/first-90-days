@@ -1,5 +1,6 @@
 import type { Dispatch } from 'react';
 import { DAYS, THREADS, type Day } from '../data/content';
+import { AssetImage } from './AssetImage';
 import { learnedItems, type Action, type Learn, type State } from '../state';
 
 type P = { s: State; d: Dispatch<Action>; day: Day; live: boolean };
@@ -164,6 +165,7 @@ function Draft({ s, d, day, live }: P) {
         <div className="chat__body">
           {s.draftRewritten ? (<><p className="chat__old"><s>{ix.draft}…</s></p><p className="chat__msg">{ix.rewrite}</p></>) : <p className="chat__msg">{ix.draft}<span className="caret" aria-hidden="true">|</span></p>}
           {s.draftChoice && <p className="chat__outcome" role="status">{ix.options[s.draftChoice]}</p>}
+          {sent && live && <AssetImage k="SB_blue-pal-sending" className="flyer" alt="" />}
         </div>
       </div>
       {!sent && (
@@ -213,6 +215,7 @@ function Brief({ s, d, day, live }: P) {
         <span className="ix-hint">{v < 50 ? 'Slide the revised version across.' : 'The ripple:'}</span>
         <button type="button" className="ix-btn ix-btn--ghost ix-btn--sm" tabIndex={tab(live)} onClick={() => d({ t: 'brief', v: v < 50 ? 100 : 0 })}>{v < 50 ? 'Show revised' : 'Show original'}</button>
       </div>
+      {v >= 50 && <span className="ripples" aria-hidden="true"><i /><i /><i /></span>}
       <ul className={'ripple' + (v >= 50 ? ' is-on' : '')} aria-hidden={v < 50}>{ix.ripple.map(r => <li key={r}>{r}</li>)}</ul>
     </div>
   );
@@ -364,12 +367,13 @@ export function ExperienceMap({ s, d, live, compact = false }: Partial<P> & { s:
       <div className="xmap" role="list" aria-label="Experience map, days 0 to 90">
         {cells.map(n => {
           const hit = byN.get(n);
-          if (!hit) return <span key={n} role="listitem" className="xmap__c" aria-label={`Day ${n}`}><i>{n}</i></span>;
+          const delay = { animationDelay: `${n * 14}ms` };
+          if (!hit) return <span key={n} role="listitem" className="xmap__c" style={delay} aria-label={`Day ${n}`}><i>{n}</i></span>;
           const id = hit.day.id; const seen = !!s.visited[id];
           const cls = 'xmap__c is-turn' + (seen ? ' is-seen' : '') + (s.marks[id] ? ' is-marked' : '') + (s.clips[id] ? ' is-clipped' : '');
           if (compact) return <span key={n} role="listitem" className={cls} aria-label={`Day ${hit.day.label}${seen ? ', opened' : ', not opened'}${s.marks[id] ? ', pencil-marked' : ''}`}><i>{n}</i><span className="xmap__dots" aria-hidden="true">{hit.day.threads.map(t => <b key={t} style={{ background: THREADS[t].color }} />)}</span></span>;
           return (
-            <button key={n} role="listitem" type="button" tabIndex={tab(live)} className={'xmap__c is-turn' + (seen ? ' is-seen' : '') + (s.marks[id] ? ' is-marked' : '') + (s.clips[id] ? ' is-clipped' : '')}
+            <button key={n} role="listitem" type="button" style={delay} tabIndex={tab(live)} className={'xmap__c is-turn' + (seen ? ' is-seen' : '') + (s.marks[id] ? ' is-marked' : '') + (s.clips[id] ? ' is-clipped' : '')}
               onClick={() => d({ t: 'turn', to: hit.page })} aria-label={`Day ${hit.day.label}: ${hit.day.headline}${seen ? ', opened' : ', not opened'}${s.marks[id] ? ', pencil-marked' : ''}${s.clips[id] ? ', clipped' : ''}. Turn to this day.`}>
               <i>{n}</i>
               <span className="xmap__dots" aria-hidden="true">{hit.day.threads.map(t => <b key={t} style={{ background: THREADS[t].color }} />)}</span>

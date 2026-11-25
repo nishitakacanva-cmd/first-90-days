@@ -1,8 +1,11 @@
-import { useEffect, useLayoutEffect, useReducer, useRef, useState } from 'react';
-import { initial, reducer, LIGHTS } from './state';
+import { useCallback, useEffect, useLayoutEffect, useReducer, useRef, useState } from 'react';
+import { initial, reducer, sfxFor, LIGHTS, type Action } from './state';
+import { play } from './sound';
+import { Confetti } from './components/Fun';
 import { DeskScene } from './scenes/DeskScene';
 import { EvidenceDrawer, Finding, IndexPanel, Modal, NoteEditor, PrintPanel, PrintSummary, Sketchbook } from './components/Panels';
 import { META, PAGE_COUNT, dayAt } from './data/content';
+import { AssetImage } from './components/AssetImage';
 
 const BASE_W = 1376, BASE_H = 768, BAR = 52, MIN_STAGE_SCALE = 0.84;
 
@@ -14,7 +17,10 @@ function useReducedMotion() {
 }
 
 export default function App() {
-  const [s, d] = useReducer(reducer, initial);
+  const [s, raw] = useReducer(reducer, initial);
+  // Every action goes through here so it can make its sound (when sound is on).
+  const sref = useRef(s); sref.current = s;
+  const d = useCallback((a: Action) => { const cur = sref.current; if (cur.sound) play(sfxFor(a, cur)); raw(a); }, []);
   const reduced = useReducedMotion();
   const wrapRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
@@ -38,6 +44,7 @@ export default function App() {
   // Keyboard: ←/→ or PgUp/PgDn turn pages, Home/End jump, I index, L light, E evidence.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape' && s.tip) { d({ t: 'tipClose' }); return; }
       if (s.phase !== 'desk' || s.panel || e.altKey || e.ctrlKey || e.metaKey) return;
       const el = e.target as HTMLElement;
       if (el.closest('input, textarea, select, [role="tab"], dialog')) return;
@@ -52,26 +59,29 @@ export default function App() {
     }
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [s.phase, s.panel, s.page, s.light]);
+  }, [s.phase, s.panel, s.page, s.light, s.tip, d]);
 
   const day = dayAt(s.page);
   const closePanel = () => d({ t: 'panel', p: null });
   return (
     <div className={'app mode-' + mode + (reduced ? ' rm' : '') + (s.phase === 'finding' ? ' is-finding' : '')}>
       <header className="topbar">
-        <div className="topbar__brand"><b>The First 90 Days</b><span>{META.attribution}</span></div>
+        <div className="topbar__brand"><AssetImage k="SB_sb-mark" className="topbar__mark" alt="Studio Bridge" /><b>The First 90 Days</b><span>{META.attribution}</span></div>
         <p className="topbar__where" aria-live="off"><span className="mono">{day ? `DAY ${day.label}` : 'COVER'}</span><span>{s.page + 1} / {PAGE_COUNT}</span></p>
         <nav className="topbar__nav" aria-label="Calendar controls">
           <button type="button" className="tbtn" onClick={() => d({ t: 'turn', to: s.page - 1 })} disabled={s.page === 0 || !!s.turning} aria-label="Previous page">←</button>
           <button type="button" className="tbtn" onClick={() => d({ t: 'turn', to: s.page + 1 })} disabled={s.page === PAGE_COUNT - 1 || !!s.turning} aria-label="Next page">→</button>
           <button type="button" className="tbtn" onClick={() => d({ t: 'panel', p: 'index' })}>Index</button>
           <label className="tlight"><span>Light</span>
-            <select value={s.light} onChange={e => d({ t: 'light', l: e.target.value as typeof s.light })} aria-label="Lighting">
+            <select value={s.light} onChange={e => { d({ t: 'light', l: e.target.value as typeof s.light }); d({ t: 'tip', k: 'light' }); }} aria-label="Lighting">
               {LIGHTS.map(l => <option key={l.id} value={l.id}>{l.label}</option>)}
             </select>
           </label>
           <button type="button" className="tbtn" onClick={() => d({ t: 'panel', p: 'evidence' })} aria-pressed={s.panel === 'evidence'}>Evidence</button>
           <button type="button" className="tbtn" onClick={() => d({ t: 'panel', p: 'print' })}>Print</button>
+          <button type="button" className="tbtn tbtn--icon" onClick={() => { raw({ t: 'sound' }); if (!s.sound) play('ding'); }} aria-pressed={s.sound} aria-label={s.sound ? 'Sound on. Turn sound off' : 'Sound off. Turn sound on'} title={s.sound ? 'Sound on' : 'Sound off'}>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor" />{s.sound ? <path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /> : <path d="M16 9l6 6M22 9l-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />}</svg>
+          </button>
           <button type="button" className="tbtn tbtn--ghost" onClick={() => d({ t: 'reset' })}>Reset</button>
         </nav>
       </header>
@@ -87,6 +97,7 @@ export default function App() {
       <Modal open={s.panel === 'print'} onClose={closePanel} label="Print the calendar"><PrintPanel d={d} /></Modal>
       {s.phase === 'finding' && <Finding s={s} d={d} />}
       {s.phase === 'finding' && <PrintSummary s={s} />}
+      {s.burst > 0 && !reduced && <Confetti key={s.burst} />}
       <p className="sr-only" role="status" aria-live="polite">{s.announce}</p>
     </div>
   );

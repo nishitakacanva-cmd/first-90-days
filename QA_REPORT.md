@@ -1,8 +1,39 @@
 # Exhibit 3: The First 90 Days. QA report
 
-**Version:** 1.0 · Studio Bridge · Exhibit 3 of 5
+**Version:** 1.1 · Studio Bridge · Exhibit 3 of 5 (revised after team feedback)
 **Build:** React 19 + TypeScript + Vite 8. `npm install && npm run build`, then serve `dist/` from any static server (it works from a subfolder because the base is `./`).
 **Content source:** `src/data/content.json` holds all copy, the 12 days, the threads, the badge text, sources and disclaimers. The app reads it through `content.ts`, and the print builder (`tools/build_print.py`) reads the same file, so the screen and the PDFs can't drift apart.
+
+## v1.1: changes from team feedback
+Feedback: it felt plain and "sad", objects didn't say what they were for, there were no images, and it wasn't fun enough (no sound, not enough movement). The team also asked for a light Studio Bridge touch.
+
+- **Every object explains itself.** Tapping any desk object (mug, badge, pencil, clips, sticky notes, sketchbook, research notes, index, envelope, ruler, light) brings up the blue pal from the brand package. It says what the object is and why it matters, beside the object on desktop or as a toast on phones. The tip closes itself after 9 s, or with × or Esc.
+- **Every day says why it matters.** Once you use a day's mechanism, the pink pal gives a one-line "why it matters" on the desk. It tucks into a "Why it matters" button.
+- **Pictures on every page.** Each of the 12 days and the cover carry a Studio Bridge character and a sticker chosen for the day, with a tinted halo in the thread colour. The cover adds the yellow Studio Bridge badge and a pink "90 DAYS".
+- **Colour.** The thread colours now come from the brand palette: blue = role, mint-green = team, pink = you. They are used in the day numbers, tape strips, tags, the 91-day grid and the finding.
+- **Sound.** Synthesised in the browser with the Web Audio API, so no audio files are loaded and nothing is recorded:
+  - page flip and paper rustle;
+  - pencil scribble, clip snap, mug slide, badge whoosh;
+  - sticky pop, card flip, tray thud;
+  - a chime at the finding.
+
+  The speaker button in the top bar mutes everything, and nothing plays before your first tap.
+- **Movement:**
+  - confetti in brand colours on the offer letter and the finding;
+  - mug steam, and dust drifting in daylight;
+  - a swinging badge, props that wobble on hover, and pulsing pink beacons on objects you haven't tried;
+  - characters pop in when a page arrives and stickers bob;
+  - task slips drop, cards flip, ripples spread on Day 21, the sent message flies off on Day 14, and the 91-day map fills in square by square.
+
+  Reduced motion turns all of this off and keeps the text.
+- **Brand assets.** 38 files from `studiobridge/packages/brand` (Prototypes ZIP), trimmed and resized by `tools/brand_assets.py`, and recorded in `asset-manifest.json` with their source path. The pack's "do-not-use" and "restricted" assets were avoided. The font is Bricolage Grotesque (OFL, Latin subset), used for the pal speech.
+- **Print PDFs** were rebuilt with the new thread colours, and all 12 print checks pass again.
+- **Fixes found along the way:**
+  - a CSS rule that collapsed the Day 21 page;
+  - the day number blocking clicks;
+  - an over-wide top bar at 768 px that made tablets zoom out.
+
+**Tests now: 123/123 interaction checks** (19 new: tips for every object, why-notes, illustrations on all 12 days, sound on and off, confetti, beacons, steam and dust, reduced motion), **6/6 viewports**, **12/12 print**.
 
 ## What it is
 A ring-bound desk calendar on the overhead oak desk from the asset pack.

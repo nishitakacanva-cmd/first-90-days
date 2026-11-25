@@ -1,4 +1,5 @@
-import { DAYS, PAGE_COUNT, dayAt } from './data/content';
+import { DAYS, PAGE_COUNT, dayAt, type Day, type PropKey } from './data/content';
+import type { SfxName } from './sound';
 
 export type Light = 'morning' | 'afternoon' | 'evening' | 'lamp';
 export const LIGHTS: { id: Light; label: string; key: string }[] = [
@@ -37,6 +38,10 @@ export type State = {
   tab: string; keep: string[];
   sheets: number;
   announce: string;
+  tip: null | { k: PropKey; n: number };
+  tried: Partial<Record<PropKey, true>>;
+  sound: boolean;
+  burst: number;
 };
 
 export const initial: State = {
@@ -44,7 +49,7 @@ export const initial: State = {
   mugMoved: false, badgeFlipped: false, panel: null, marks: {}, clips: {}, notes: {},
   letterOpen: false, orgFlap: false, orgSel: null, slipsPulled: 0, slipSort: {}, order: [], orderDone: false,
   draftOpen: false, draftChoice: null, draftRewritten: false, brief: 0, learn: {}, agendaFolds: 0, filed: {},
-  tab: 'idea', keep: [], sheets: 0, announce: ''
+  tab: 'idea', keep: [], sheets: 0, announce: '', tip: null, tried: {}, sound: true, burst: 0
 };
 
 export type Action =
@@ -67,7 +72,8 @@ export type Action =
   | { t: 'file'; i: number; tray: number }
   | { t: 'tab'; id: string } | { t: 'keep'; item: string }
   | { t: 'sheets'; v: number }
-  | { t: 'finding' } | { t: 'backToDesk' } | { t: 'reset' };
+  | { t: 'finding' } | { t: 'backToDesk' } | { t: 'reset' }
+  | { t: 'tip'; k: PropKey } | { t: 'tipClose' } | { t: 'sound' };
 
 const clampPage = (n: number) => Math.max(0, Math.min(PAGE_COUNT - 1, n));
 const curId = (s: State) => dayAt(s.page)?.id ?? null;
@@ -110,7 +116,7 @@ export function reducer(s: State, a: Action): State {
       const list = [...(s.notes[a.day] ?? [])]; list.splice(a.i, 1);
       return { ...s, notes: { ...s.notes, [a.day]: list }, announce: 'Sticky note removed' };
     }
-    case 'letter': return { ...s, letterOpen: !s.letterOpen, announce: s.letterOpen ? 'Letter folded' : 'Letter unfolded' };
+    case 'letter': return { ...s, letterOpen: !s.letterOpen, burst: s.letterOpen ? s.burst : s.burst + 1, announce: s.letterOpen ? 'Letter folded' : 'Letter unfolded' };
     case 'orgFlap': return { ...s, orgFlap: !s.orgFlap, orgSel: null, announce: s.orgFlap ? 'Showing the formal chart' : 'Flap lifted: the unwritten chart' };
     case 'orgSel': return { ...s, orgSel: a.id };
     case 'slipPull': {
@@ -139,9 +145,12 @@ export function reducer(s: State, a: Action): State {
     case 'tab': return { ...s, tab: a.id };
     case 'keep': return { ...s, keep: s.keep.includes(a.item) ? s.keep.filter(x => x !== a.item) : [...s.keep, a.item] };
     case 'sheets': return { ...s, sheets: Math.max(0, Math.min(100, a.v)) };
-    case 'finding': return { ...s, phase: 'finding', panel: null, turning: null, announce: 'The offer was day zero. The understanding came later.' };
+    case 'finding': return { ...s, phase: 'finding', panel: null, turning: null, burst: s.burst + 1, announce: 'The offer was day zero. The understanding came later.' };
     case 'backToDesk': return { ...s, phase: 'desk' };
-    case 'reset': return { ...initial, announce: 'Calendar reset to the cover' };
+    case 'reset': return { ...initial, sound: s.sound, announce: 'Calendar reset to the cover' };
+    case 'tip': return { ...s, tip: { k: a.k, n: (s.tip?.n ?? 0) + 1 }, tried: { ...s.tried, [a.k]: true } };
+    case 'tipClose': return { ...s, tip: null };
+    case 'sound': return { ...s, sound: !s.sound, announce: s.sound ? 'Sound off' : 'Sound on' };
   }
 }
 
@@ -151,4 +160,49 @@ export function learnedItems(s: State): string[] {
   if (!d || d.interaction.type !== 'checklist') return [];
   const items = d.interaction.items;
   return items.filter((_, i) => s.learn[i] === 'Learned something');
+}
+
+/** Has the visitor used this day's own mechanism yet? Drives the "why it matters" note. */
+export function didInteract(s: State, d: Day): boolean {
+  switch (d.interaction.type) {
+    case 'letter': return s.letterOpen;
+    case 'orgchart': return s.orgFlap;
+    case 'slips': return s.slipsPulled > 0;
+    case 'prioritise': return s.orderDone;
+    case 'draft': return !!s.draftChoice;
+    case 'brief': return s.brief >= 50;
+    case 'checklist': return Object.keys(s.learn).length > 0;
+    case 'agenda': return s.agendaFolds > 0;
+    case 'file': return Object.keys(s.filed).length > 0;
+    case 'tabs': return s.keep.length > 0 || s.tab !== 'idea';
+    case 'sheets': return s.sheets >= 60;
+    case 'map': return true;
+  }
+}
+
+/** The sound each action makes (null = silent). */
+export function sfxFor(a: Action, s: State): SfxName | null {
+  switch (a.t) {
+    case 'turn': return s.turning || s.phase !== 'desk' ? null : 'flip';
+    case 'letter': case 'orgFlap': case 'agenda': return 'rustle';
+    case 'mug': return 'slide';
+    case 'badge': return 'whoosh';
+    case 'mark': return 'scribble';
+    case 'clip': return 'snap';
+    case 'addNote': return a.text.trim() ? 'pop' : null;
+    case 'delNote': return 'tick';
+    case 'slipPull': return 'slide';
+    case 'slipSort': case 'orderMove': case 'tab': return 'tick';
+    case 'orderPick': case 'keep': return 'pop';
+    case 'orderDone': return 'ding';
+    case 'draftOpen': return 'click';
+    case 'draftChoice': return a.c === 'send' ? 'whoosh' : 'scribble';
+    case 'learn': return 'flip';
+    case 'file': return 'thud';
+    case 'light': return 'click';
+    case 'panel': return a.p ? 'click' : null;
+    case 'finding': return 'chime';
+    case 'reset': return 'whoosh';
+    default: return null;
+  }
 }
