@@ -1,0 +1,190 @@
+{
+ "FD_ENV_01_OverheadDesk_v01": {
+  "path": "assets/04_The_First_90_Days/01_Environments/FD_ENV_01_OverheadDesk_v01.png",
+  "w": 1376,
+  "h": 768,
+  "alpha": false
+ },
+ "FD_LIGHT_01_MorningLighting_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_LIGHT_01_MorningLighting_v01.png",
+  "w": 1376,
+  "h": 768,
+  "alpha": true
+ },
+ "FD_LIGHT_02_AfternoonLighting_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_LIGHT_02_AfternoonLighting_v01.png",
+  "w": 1376,
+  "h": 768,
+  "alpha": true
+ },
+ "FD_LIGHT_03_EveningLighting_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_LIGHT_03_EveningLighting_v01.png",
+  "w": 1376,
+  "h": 768,
+  "alpha": true
+ },
+ "FD_LIGHT_04_DeskLampLighting_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_LIGHT_04_DeskLampLighting_v01.png",
+  "w": 1376,
+  "h": 768,
+  "alpha": true
+ },
+ "FD_PAGE_01_CalendarPageTemplate_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_PAGE_01_CalendarPageTemplate_v01.png",
+  "w": 539,
+  "h": 551,
+  "alpha": true
+ },
+ "FD_PROP_01_RingBoundCalendarBase_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_PROP_01_RingBoundCalendarBase_v01.png",
+  "w": 513,
+  "h": 557,
+  "alpha": true
+ },
+ "FD_PROP_02_CeramicMug_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_PROP_02_CeramicMug_v01.png",
+  "w": 344,
+  "h": 271,
+  "alpha": true
+ },
+ "FD_PROP_03_PencilCup_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_PROP_03_PencilCup_v01.png",
+  "w": 302,
+  "h": 321,
+  "alpha": true
+ },
+ "FD_PROP_04_PenAndPencil_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_PROP_04_PenAndPencil_v01.png",
+  "w": 127,
+  "h": 375,
+  "alpha": true
+ },
+ "FD_PROP_05_StickyNoteStack_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_PROP_05_StickyNoteStack_v01.png",
+  "w": 322,
+  "h": 291,
+  "alpha": true
+ },
+ "FD_PROP_06_AccessCard_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_PROP_06_AccessCard_v01.png",
+  "w": 285,
+  "h": 293,
+  "alpha": true
+ },
+ "FD_PROP_07_BinderAndPaperClips_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_PROP_07_BinderAndPaperClips_v01.png",
+  "w": 328,
+  "h": 294,
+  "alpha": true
+ },
+ "FD_PROP_08_Envelope_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_PROP_08_Envelope_v01.png",
+  "w": 413,
+  "h": 307,
+  "alpha": true
+ },
+ "FD_PROP_09_SketchbookClosed_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_PROP_09_SketchbookClosed_v01.png",
+  "w": 262,
+  "h": 359,
+  "alpha": true
+ },
+ "FD_PROP_10_SketchbookOpen_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_PROP_10_SketchbookOpen_v01.png",
+  "w": 446,
+  "h": 359,
+  "alpha": true
+ },
+ "FD_PROP_11_TransparentRuler_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_PROP_11_TransparentRuler_v01.png",
+  "w": 646,
+  "h": 125,
+  "alpha": true
+ },
+ "FD_PROP_12_LoosePaperSheets_v01": {
+  "path": "assets/04_The_First_90_Days/03_Cropped_Transparent_PNGs/FD_PROP_12_LoosePaperSheets_v01.png",
+  "w": 467,
+  "h": 599,
+  "alpha": true
+ },
+ "FD_PROP_02_CeramicMug_v01__clean": {
+  "path": "assets/derived/FD_PROP_02_CeramicMug_v01__clean.png",
+  "w": 344,
+  "h": 271,
+  "alpha": true,
+  "derivedFrom": "FD_PROP_02_CeramicMug_v01",
+  "derivation": "Residual light background fringe connected to the transparent edge removed (grey/white, low saturation); shadows are drawn live in CSS to follow the chosen lighting overlay."
+ },
+ "FD_PROP_03_PencilCup_v01__clean": {
+  "path": "assets/derived/FD_PROP_03_PencilCup_v01__clean.png",
+  "w": 302,
+  "h": 321,
+  "alpha": true,
+  "derivedFrom": "FD_PROP_03_PencilCup_v01",
+  "derivation": "Residual light background fringe connected to the transparent edge removed (grey/white, low saturation); shadows are drawn live in CSS to follow the chosen lighting overlay."
+ },
+ "FD_PROP_04_PenAndPencil_v01__clean": {
+  "path": "assets/derived/FD_PROP_04_PenAndPencil_v01__clean.png",
+  "w": 127,
+  "h": 375,
+  "alpha": true,
+  "derivedFrom": "FD_PROP_04_PenAndPencil_v01",
+  "derivation": "Residual light background fringe connected to the transparent edge removed (grey/white, low saturation); shadows are drawn live in CSS to follow the chosen lighting overlay."
+ },
+ "FD_PROP_05_StickyNoteStack_v01__clean": {
+  "path": "assets/derived/FD_PROP_05_StickyNoteStack_v01__clean.png",
+  "w": 322,
+  "h": 291,
+  "alpha": true,
+  "derivedFrom": "FD_PROP_05_StickyNoteStack_v01",
+  "derivation": "Residual light background fringe connected to the transparent edge removed (grey/white, low saturation); shadows are drawn live in CSS to follow the chosen lighting overlay."
+ },
+ "FD_PROP_06_AccessCard_v01__clean": {
+  "path": "assets/derived/FD_PROP_06_AccessCard_v01__clean.png",
+  "w": 285,
+  "h": 293,
+  "alpha": true,
+  "derivedFrom": "FD_PROP_06_AccessCard_v01",
+  "derivation": "Residual light background fringe connected to the transparent edge removed (grey/white, low saturation); shadows are drawn live in CSS to follow the chosen lighting overlay. White blob beside the clip strap removed."
+ },
+ "FD_PROP_07_BinderAndPaperClips_v01__clean": {
+  "path": "assets/derived/FD_PROP_07_BinderAndPaperClips_v01__clean.png",
+  "w": 328,
+  "h": 294,
+  "alpha": true,
+  "derivedFrom": "FD_PROP_07_BinderAndPaperClips_v01",
+  "derivation": "Residual light background fringe connected to the transparent edge removed (grey/white, low saturation); shadows are drawn live in CSS to follow the chosen lighting overlay."
+ },
+ "FD_PROP_08_Envelope_v01__clean": {
+  "path": "assets/derived/FD_PROP_08_Envelope_v01__clean.png",
+  "w": 413,
+  "h": 307,
+  "alpha": true,
+  "derivedFrom": "FD_PROP_08_Envelope_v01",
+  "derivation": "Residual light background fringe connected to the transparent edge removed (grey/white, low saturation); shadows are drawn live in CSS to follow the chosen lighting overlay."
+ },
+ "FD_PROP_09_SketchbookClosed_v01__clean": {
+  "path": "assets/derived/FD_PROP_09_SketchbookClosed_v01__clean.png",
+  "w": 262,
+  "h": 359,
+  "alpha": true,
+  "derivedFrom": "FD_PROP_09_SketchbookClosed_v01",
+  "derivation": "Residual light background fringe connected to the transparent edge removed (grey/white, low saturation); shadows are drawn live in CSS to follow the chosen lighting overlay."
+ },
+ "FD_PROP_10_SketchbookOpen_v01__clean": {
+  "path": "assets/derived/FD_PROP_10_SketchbookOpen_v01__clean.png",
+  "w": 446,
+  "h": 359,
+  "alpha": true,
+  "derivedFrom": "FD_PROP_10_SketchbookOpen_v01",
+  "derivation": "Residual light background fringe connected to the transparent edge removed (grey/white, low saturation); shadows are drawn live in CSS to follow the chosen lighting overlay."
+ },
+ "FD_PROP_01_RingBoundCalendarBase_v01__board": {
+  "path": "assets/derived/FD_PROP_01_RingBoundCalendarBase_v01__board.png",
+  "w": 486,
+  "h": 480,
+  "alpha": true,
+  "derivedFrom": "FD_PROP_01_RingBoundCalendarBase_v01",
+  "derivation": "Cropped to the board and page block (box 14,66,500,546). The cut-out rings above the board were broken and carried speckle noise, so the wire binding is redrawn in SVG; the hard black baked shadow was removed and replaced with a live CSS shadow."
+ }
+}

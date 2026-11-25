@@ -1,0 +1,671 @@
+{
+  "meta": {
+    "title": "THE FIRST 90 DAYS",
+    "subtitle": "YOU GOT THE JOB. NOW MEET THE JOB.",
+    "researchNote": "An illustrated synthesis of interview themes—not a day-by-day diary of a real participant.",
+    "attribution": "Studio Bridge · Exhibit 3 of 5",
+    "composite": "Illustrative composite. Names, briefs, comments and messages are invented for this exhibit.",
+    "notLongitudinal": "These are narrative turning points, not observations of one person over time.",
+    "studio": "THE STUDIO",
+    "role": "JUNIOR DESIGNER"
+  },
+  "threads": {
+    "role": {
+      "label": "Understanding the role",
+      "short": "ROLE",
+      "color": "#B5573B",
+      "cmyk": [
+        0,
+        0.62,
+        0.72,
+        0.25
+      ]
+    },
+    "team": {
+      "label": "The team",
+      "short": "TEAM",
+      "color": "#5F7F57",
+      "cmyk": [
+        0.35,
+        0,
+        0.42,
+        0.45
+      ]
+    },
+    "self": {
+      "label": "Your preferences",
+      "short": "YOU",
+      "color": "#B8862A",
+      "cmyk": [
+        0,
+        0.3,
+        0.8,
+        0.25
+      ]
+    }
+  },
+  "cover": {
+    "how": [
+      "Turn a page with the corner tab, the arrow keys or a swipe.",
+      "Things on the desk move too: the mug, the badge, the sketchbook, the pencil.",
+      "Every day has two sides. Switch between the new designer and the team."
+    ],
+    "cta": "Turn to Day 00"
+  },
+  "days": [
+    {
+      "id": "d00",
+      "n": 0,
+      "label": "00",
+      "headline": "CONGRATULATIONS. YOU’RE IN.",
+      "theme": "The offer · uncertainty",
+      "threads": [
+        "role",
+        "self"
+      ],
+      "student": "The letter says yes. It says when to arrive and what the job is called. It doesn’t say what Monday looks like.",
+      "team": "For the team, the hire is one line on a busy list. They’re already planning what you’ll pick up first, and assume you know more than you do.",
+      "slip": "A job title arrived before the job did.",
+      "mug": "What should I have ready for my first morning?",
+      "sources": [
+        "sb"
+      ],
+      "basis": "Day theme from the Studio Bridge interview synthesis: the gap between accepting an offer and knowing what the work involves.",
+      "interaction": {
+        "type": "letter",
+        "verb": "Unfold the letter",
+        "letter": {
+          "salutation": "Dear new joiner,",
+          "body": "We’re delighted to offer you the position of Junior Designer. You’ll start on Monday at 9:30 and report to the Design Lead. Please bring your ID.",
+          "signoff": "Welcome aboard. The Studio"
+        },
+        "margin": [
+          "Junior designer of what, exactly?",
+          "Who is the Design Lead?",
+          "Bring a laptop? A portfolio? Lunch?"
+        ]
+      },
+      "print": {
+        "prompt": "Write down three things the letter didn’t tell you.",
+        "lines": 3
+      }
+    },
+    {
+      "id": "d01",
+      "n": 1,
+      "label": "01",
+      "headline": "HELLO, EVERYONE.",
+      "theme": "The team · unwritten rules",
+      "threads": [
+        "team"
+      ],
+      "student": "Twelve names before lunch. The org chart shows who reports to whom. It doesn’t show who actually knows where things are.",
+      "team": "Everyone remembers their own first day. Few remember to explain the things they now do without thinking.",
+      "slip": "The chart showed reporting lines, not how things actually get done.",
+      "mug": "Who should I go to when I’m stuck, and is that the same person who reviews my work?",
+      "sources": [
+        "sb",
+        "bauer2010"
+      ],
+      "basis": "Bauer (2010, p. 2) separates formal and informal norms (“culture”) and the relationships a newcomer needs (“connection”). The chart and its unwritten version are invented.",
+      "interaction": {
+        "type": "orgchart",
+        "verb": "Lift the flap",
+        "nodes": [
+          {
+            "id": "head",
+            "name": "Studio Head",
+            "row": 0,
+            "col": 1,
+            "unwritten": "Signs off on anything that goes to a new client."
+          },
+          {
+            "id": "lead",
+            "name": "Design Lead",
+            "row": 1,
+            "col": 0,
+            "unwritten": "Your reviewer. Busiest on Thursdays."
+          },
+          {
+            "id": "acct",
+            "name": "Account Manager",
+            "row": 1,
+            "col": 2,
+            "unwritten": "Knows what the client actually cares about."
+          },
+          {
+            "id": "senior",
+            "name": "Senior Designer",
+            "row": 2,
+            "col": 0,
+            "unwritten": "Knows where the brand files really live."
+          },
+          {
+            "id": "you",
+            "name": "You",
+            "row": 2,
+            "col": 1,
+            "unwritten": "Nobody has told you lunch is at 1:15. Everyone goes."
+          },
+          {
+            "id": "prod",
+            "name": "Producer",
+            "row": 2,
+            "col": 2,
+            "unwritten": "Knows which deadlines are real deadlines."
+          }
+        ]
+      },
+      "print": {
+        "prompt": "Draw the chart you were given. Then draw who you actually ask.",
+        "lines": 0
+      }
+    },
+    {
+      "id": "d03",
+      "n": 3,
+      "label": "03",
+      "headline": "THAT’S IN MY JOB DESCRIPTION?",
+      "theme": "Everyday tasks",
+      "threads": [
+        "role"
+      ],
+      "student": "The description said “create engaging visual content”. This week that meant resizing, renaming, exporting, and one sketch you were proud of.",
+      "team": "Production work keeps a studio running. Someone has to do it, and it’s often how a newcomer learns the systems.",
+      "slip": "Most of the week was in the description, just in vaguer words.",
+      "mug": "What does a normal week look like for the person who did this before me?",
+      "sources": [
+        "sb",
+        "bauer2010"
+      ],
+      "basis": "Bauer (2010, p. 5): role clarity, how well a newcomer understands the role and its expectations, is one of the main adjustment outcomes. The job description and tasks are invented.",
+      "interaction": {
+        "type": "slips",
+        "verb": "Pull out a task slip",
+        "jd": "Junior Designer: create engaging visual content across print and digital; support the team on brand projects; collaborate with stakeholders.",
+        "categories": [
+          "Listed",
+          "Implied",
+          "Not mentioned"
+        ],
+        "tasks": [
+          "Resize one banner into nine formats",
+          "Rename 140 files to the naming convention",
+          "Update last year’s deck with new numbers",
+          "Export print-ready PDFs for the printer",
+          "Sit in on a client call (mic off)",
+          "Sketch three ideas for a logo refresh"
+        ],
+        "after": "There’s no answer key. Most of it fits under “support the team”. That phrase is doing a lot of work."
+      },
+      "print": {
+        "prompt": "List this week’s tasks. Tick the ones the job description named.",
+        "lines": 5
+      }
+    },
+    {
+      "id": "d07",
+      "n": 7,
+      "label": "07",
+      "headline": "THREE COMMENTS. ONE FILE.",
+      "theme": "Conflicting feedback",
+      "threads": [
+        "team",
+        "role"
+      ],
+      "student": "Three people opened the same file and left three different notes. They can’t all go first.",
+      "team": "Each reviewer is looking after something different: the brand, the client, the deadline. Nobody thinks they’re contradicting anyone.",
+      "slip": "Conflicting notes often meant different responsibilities, not different opinions of me.",
+      "mug": "When comments conflict, who makes the final call?",
+      "sources": [
+        "sb",
+        "bauer2010"
+      ],
+      "basis": "Bauer (2010, p. 5) notes that ambiguous expectations get in the way of performance. The three comments are invented.",
+      "interaction": {
+        "type": "prioritise",
+        "verb": "Put the replies in order",
+        "comments": [
+          {
+            "id": "c1",
+            "who": "Design Lead",
+            "text": "The logo needs more breathing room.",
+            "looksAfter": "the brand"
+          },
+          {
+            "id": "c2",
+            "who": "Account Manager",
+            "text": "Client wants the price much bigger.",
+            "looksAfter": "the client"
+          },
+          {
+            "id": "c3",
+            "who": "Senior Designer",
+            "text": "The type hierarchy is fighting itself.",
+            "looksAfter": "the craft"
+          }
+        ],
+        "after": "There isn’t one right order. A useful reply might be: “A bigger price will crowd the logo. Which matters more for Thursday?”"
+      },
+      "print": {
+        "prompt": "Three comments, one file. Number them, then write the question you’d ask.",
+        "lines": 2
+      }
+    },
+    {
+      "id": "d14",
+      "n": 14,
+      "label": "14",
+      "headline": "IS THIS A STUPID QUESTION?",
+      "theme": "Confidence and asking",
+      "threads": [
+        "self",
+        "team"
+      ],
+      "student": "The draft has been open since 10:40. It starts with “Sorry, probably obvious, but…”",
+      "team": "The team would rather answer a question now than redo the job on Friday. Most of them can’t remember who asked what.",
+      "slip": "Asking felt like exposing a gap. Not asking left the gap in the work.",
+      "mug": "Is there a good time of day for quick questions?",
+      "sources": [
+        "sb",
+        "bauer2010"
+      ],
+      "basis": "Bauer (2010, p. 13) describes information-seeking and feedback-seeking as proactive behaviours that help newcomers adjust, and notes some hesitate to ask for fear of exposing weaknesses. The draft and reply are invented.",
+      "interaction": {
+        "type": "draft",
+        "verb": "Open the unsent draft",
+        "to": "Design Lead",
+        "draft": "Sorry to bother you!! Quick question, probably really obvious, but",
+        "rewrite": "Before I export: does the printer need CMYK or RGB?",
+        "options": {
+          "send": "Sent. Reply, two minutes later: “CMYK. Good catch.”",
+          "keep": "Still in drafts. The question is still there, and so is the export.",
+          "rewrite": "Shorter. No apology. The question is the whole message now."
+        }
+      },
+      "print": {
+        "prompt": "Write the question you’ve been putting off. Cross out the apology.",
+        "lines": 2
+      }
+    },
+    {
+      "id": "d21",
+      "n": 21,
+      "label": "21",
+      "headline": "SMALL CHANGE. BIG RIPPLE.",
+      "theme": "The revised brief",
+      "threads": [
+        "role"
+      ],
+      "student": "One line changed in the brief. By the afternoon it had touched every file.",
+      "team": "Briefs change because clients learn things too. Part of the job is spotting what a change touches.",
+      "slip": "A brief is a draft too. The job includes noticing what a change touches.",
+      "mug": "When the brief changes, can the deadline change with it?",
+      "sources": [
+        "sb",
+        "bauer2010"
+      ],
+      "basis": "Role clarity (Bauer 2010, p. 5) is not fixed at the start; a revised brief resets part of it. The brief is invented.",
+      "interaction": {
+        "type": "brief",
+        "verb": "Slide the revised brief over the original",
+        "rows": [
+          {
+            "k": "Audience",
+            "a": "Students, 18–24",
+            "b": "Students and young professionals, 18–35",
+            "changed": true
+          },
+          {
+            "k": "Deliverables",
+            "a": "3 social posts",
+            "b": "3 posts + 1 short reel + 2 adaptations",
+            "changed": true
+          },
+          {
+            "k": "Tone",
+            "a": "Playful",
+            "b": "Playful, but credible",
+            "changed": true
+          },
+          {
+            "k": "Deadline",
+            "a": "Friday",
+            "b": "Friday",
+            "changed": false
+          }
+        ],
+        "ripple": [
+          "The photography no longer fits the audience",
+          "Every caption needs rewriting",
+          "The reel needs motion time nobody scheduled",
+          "The deadline didn’t move"
+        ]
+      },
+      "print": {
+        "prompt": "Original brief / revised brief. List what the change touches.",
+        "lines": 4
+      }
+    },
+    {
+      "id": "d30",
+      "n": 30,
+      "label": "30",
+      "headline": "AM I LEARNING OR JUST DOING?",
+      "theme": "Exposure and growth",
+      "threads": [
+        "self"
+      ],
+      "student": "A month of being busy. Is busy the same as learning?",
+      "team": "From the outside, a newcomer doing lots of tasks looks like progress. Whether it feels like growth is harder to see.",
+      "slip": "Doing and learning overlapped, but not completely.",
+      "mug": "Which of my tasks are meant to teach me something, and which just need doing?",
+      "sources": [
+        "sb",
+        "deloitte2025"
+      ],
+      "basis": "Deloitte’s 2025 Gen Z and Millennial Survey found learning and development among the top three reasons for choosing an employer. The checklist is invented; your answers aren’t scored.",
+      "interaction": {
+        "type": "checklist",
+        "verb": "Turn each card",
+        "items": [
+          "Resized banners into nine formats",
+          "Sat in on two client calls",
+          "Asked about colour profiles",
+          "Rebuilt the deck template",
+          "Presented one idea in the crit",
+          "Fixed the shared type styles"
+        ],
+        "states": [
+          "Learned something",
+          "Just did it",
+          "Not sure"
+        ],
+        "after": "Anything marked “Learned something” goes onto the Day 45 agenda."
+      },
+      "print": {
+        "prompt": "What did you do this month? Circle what taught you something.",
+        "lines": 5
+      }
+    },
+    {
+      "id": "d45",
+      "n": 45,
+      "label": "45",
+      "headline": "WE NEED TO TALK.",
+      "theme": "Constructive conversations",
+      "threads": [
+        "team"
+      ],
+      "student": "A calendar invite titled “Check-in”. No description. Your stomach reads it as “we need to talk”.",
+      "team": "Most check-ins are routine. Without an agenda, a newcomer fills the gap with the worst case.",
+      "slip": "The talk was a check-in. An agenda made it a conversation.",
+      "mug": "Could check-ins come with an agenda?",
+      "sources": [
+        "sb",
+        "bauer2010"
+      ],
+      "basis": "Bauer (2010, p. 13) lists feedback-seeking among the behaviours that help newcomers adjust. The agenda is invented.",
+      "interaction": {
+        "type": "agenda",
+        "verb": "Unfold the agenda",
+        "title": "Check-in · 30 min",
+        "items": [
+          {
+            "h": "What’s going well",
+            "d": "Both sides. Specific examples."
+          },
+          {
+            "h": "What’s still unclear",
+            "d": "Priorities, who signs off, what “done” means here."
+          },
+          {
+            "h": "Feedback, both ways",
+            "d": "One thing to keep doing, one to change, from each of you."
+          },
+          {
+            "h": "What I’d like to learn next",
+            "d": "",
+            "fromDay30": true
+          },
+          {
+            "h": "Before Day 90",
+            "d": "One piece of work to own end to end."
+          }
+        ],
+        "empty": "Nothing carried over from Day 30 yet. Turn back and mark what you learned from."
+      },
+      "print": {
+        "prompt": "Write the agenda you’d want for your first check-in.",
+        "lines": 5
+      }
+    },
+    {
+      "id": "d60",
+      "n": 60,
+      "label": "60",
+      "headline": "NOT EVERYTHING SHOWS UP IN A PORTFOLIO.",
+      "theme": "Repeated collaboration",
+      "threads": [
+        "team",
+        "role"
+      ],
+      "student": "Two months of work. One poster you could show anyone. The rest made other people’s work easier.",
+      "team": "The team noticed who fixed the shared styles and who took the notes. None of that will be in a portfolio.",
+      "slip": "A lot of the work was invisible in the files and visible in how the team worked.",
+      "mug": "How does shared, behind-the-scenes work get recognised here?",
+      "sources": [
+        "sb",
+        "bauer2010"
+      ],
+      "basis": "Bauer (2010, p. 5) names social integration, feeling accepted and connected with colleagues, as an adjustment outcome. The tasks are invented.",
+      "interaction": {
+        "type": "file",
+        "verb": "File each slip",
+        "trays": [
+          "Portfolio",
+          "The team remembers"
+        ],
+        "items": [
+          "Final campaign poster",
+          "Fixed the shared type styles",
+          "Took the notes in client calls",
+          "Caught a wrong date before print",
+          "Showed the intern where the brand files live",
+          "Kept the job sheet up to date"
+        ],
+        "after": "Most of this is evidence of collaboration. It turns up in references and the next project, not on a portfolio page."
+      },
+      "print": {
+        "prompt": "Two columns: what you could show, and what the team would remember.",
+        "lines": 4
+      }
+    },
+    {
+      "id": "d75",
+      "n": 75,
+      "label": "75",
+      "headline": "DO I LIKE THE WORK, OR JUST THE IDEA OF IT?",
+      "theme": "Priorities shift",
+      "threads": [
+        "self"
+      ],
+      "student": "You wanted brand design. You like the systems part more than the big reveal. That’s new.",
+      "team": "The team is learning where you’re strongest too. A preference is useful information, not disloyalty.",
+      "slip": "Some preferences held. Some changed once the work was real.",
+      "mug": "Can I try more of the work I’ve found I like?",
+      "sources": [
+        "sb"
+      ],
+      "basis": "Day theme from the Studio Bridge interview synthesis: preferences change once the work is real. The lists are invented; nothing you pick is scored.",
+      "interaction": {
+        "type": "tabs",
+        "verb": "Lay the tabs over each other",
+        "tabs": [
+          {
+            "id": "idea",
+            "label": "The idea of it",
+            "items": [
+              "Big launches",
+              "Creative freedom",
+              "Seeing work in public",
+              "Working with famous brands"
+            ]
+          },
+          {
+            "id": "work",
+            "label": "The work as it is",
+            "items": [
+              "Building systems",
+              "Small fixes that add up",
+              "Client rounds",
+              "Fridays before a deadline"
+            ]
+          },
+          {
+            "id": "keep",
+            "label": "What I’d keep",
+            "items": []
+          }
+        ]
+      },
+      "print": {
+        "prompt": "The idea of the job / the work as it is / what you’d keep.",
+        "lines": 4
+      }
+    },
+    {
+      "id": "d85",
+      "n": 85,
+      "label": "85",
+      "headline": "WHAT HAVE WE LEARNED ABOUT EACH OTHER?",
+      "theme": "Mutual reflection",
+      "threads": [
+        "team",
+        "self"
+      ],
+      "student": "Not a review. Two lists side by side, and one place where they overlap.",
+      "team": "The team has been adjusting too: to how you work, what you need, and what you’re good at.",
+      "slip": "Adjustment went both ways.",
+      "mug": "What would you like me to do more of in the next 90 days?",
+      "sources": [
+        "sb",
+        "bauer2010"
+      ],
+      "basis": "Bauer (2010, p. 2) frames onboarding as something the organisation does too (clarification, culture, connection), not just the newcomer. The lists are invented.",
+      "interaction": {
+        "type": "sheets",
+        "verb": "Slide the sheets together",
+        "a": {
+          "title": "What I learned about the team",
+          "items": [
+            "They decide fast and revise often",
+            "Fridays are for sending, not starting",
+            "Ask early beats polish late"
+          ]
+        },
+        "b": {
+          "title": "What the team learned about me",
+          "items": [
+            "Strong on systems and detail",
+            "Needs the why behind a change",
+            "Goes quiet when unsure"
+          ]
+        },
+        "overlap": "Show work in progress. Ask early."
+      },
+      "print": {
+        "prompt": "Two lists. Where do they overlap?",
+        "lines": 4
+      }
+    },
+    {
+      "id": "d90",
+      "n": 90,
+      "label": "90",
+      "headline": "THE FIRST JOB WAS NEVER ONE MOMENT.",
+      "theme": "Accumulated evidence",
+      "threads": [
+        "role",
+        "team",
+        "self"
+      ],
+      "student": "Ninety days on, nobody mentions the offer letter. What’s left is a long run of small days.",
+      "team": "From the team’s side, the hire also became real gradually, through the work.",
+      "slip": "Understanding arrived in pieces, after the offer.",
+      "mug": "What should the next 90 days be about?",
+      "sources": [
+        "sb",
+        "bauer2010"
+      ],
+      "basis": "Onboarding guidance often treats about 90 days as the window to prove yourself (Bauer 2010, p. 1). This calendar suggests understanding keeps accumulating rather than arriving on a deadline.",
+      "interaction": {
+        "type": "map",
+        "verb": "Read the map",
+        "cta": "See what came later"
+      },
+      "print": {
+        "prompt": "Mark the days that changed how you saw the job.",
+        "lines": 0
+      }
+    }
+  ],
+  "badge": [
+    {
+      "upTo": 0,
+      "front": "VISITOR",
+      "gets": "Reception and one meeting room",
+      "still": "Everything else"
+    },
+    {
+      "upTo": 21,
+      "front": "NEW JOINER",
+      "gets": "The building, the Wi-Fi, the shared drive",
+      "still": "Who signs things off"
+    },
+    {
+      "upTo": 60,
+      "front": "TEAM MEMBER",
+      "gets": "Client calls, the Friday crit",
+      "still": "What “good” looks like here"
+    },
+    {
+      "upTo": 90,
+      "front": "TEAM MEMBER",
+      "gets": "The planning meeting",
+      "still": "What you want next"
+    }
+  ],
+  "finding": {
+    "headline": "THE OFFER WAS DAY ZERO. THE UNDERSTANDING CAME LATER.",
+    "intro": "Three threads ran through the calendar. Nothing here is measured or scored; these are the things the pages noticed, plus anything you added.",
+    "notOpened": "Not opened yet",
+    "close": "A job offer is a beginning, not a description."
+  },
+  "sources": {
+    "sb": {
+      "title": "Studio Bridge primary research: thematic synthesis",
+      "publisher": "Studio Bridge team",
+      "note": "Interviews with students, educators, design professionals and employers. The twelve day themes come from that synthesis as set out in the exhibition brief. Paraphrased; no participant is quoted, and no individual was followed over 90 days."
+    },
+    "bauer2010": {
+      "title": "Onboarding New Employees: Maximizing Success",
+      "publisher": "Talya N. Bauer, SHRM Foundation Effective Practice Guidelines, 2010",
+      "url": "https://studentaffairsdev.uga.edu/wp-content/uploads/2021/08/Onboarding-New-Employees.pdf",
+      "note": "The “Four C’s” (compliance, clarification, culture, connection; p. 2); newcomer adjustment through self-efficacy, role clarity, social integration and knowledge of culture (pp. 4–6); information- and feedback-seeking as proactive behaviours, and reluctance to ask questions that might reveal one’s weaknesses (p. 13); about 90 days to prove yourself (p. 1)."
+    },
+    "deloitte2025": {
+      "title": "2025 Gen Z and Millennial Survey",
+      "publisher": "Deloitte Global, May 2025",
+      "url": "https://www.deloitte.com/global/en/about/press-room/deloitte-2025-gen-z-and-millennial-survey.html",
+      "note": "Over 23,000 respondents in 44 countries. Learning and development ranked among the top three reasons for choosing a current employer."
+    }
+  },
+  "disclaimers": [
+    "An illustrated synthesis of interview themes—not a day-by-day diary of a real participant.",
+    "The twelve days are narrative turning points, not longitudinal data. Nobody was followed for 90 days.",
+    "Names, roles, letters, briefs, comments, drafts and replies are invented composites.",
+    "No interview quotations appear here; themes are paraphrased.",
+    "Nothing is scored. Your marks, notes and choices stay in this browser tab and are cleared when you close or reset it."
+  ]
+}
