@@ -84,7 +84,7 @@ export function StoryComments({s,d,day,live}:Props) {
         onPointerUp={()=>{if(drag && Math.abs(drag.dx)+Math.abs(drag.dy)>8){setDrag(null);return;}setDrag(null);}}
         onPointerCancel={()=>setDrag(null)}
         onClick={e=>{if(e.detail===0||!moved.current)d({t:'orderPick',id:c.id});}}>
-        <StoryImage name={notes[i]} /><span className="story-review__text"><b>{c.who}</b><span>{c.text}</span>{s.persp==='team'&&<small>Looking after {c.looksAfter}</small>}</span>{pos>=0&&<i className="story-review__num">{pos+1}</i>}
+        <StoryImage name={notes[i]} /><span className="story-review__text"><b>{c.who}</b><span>{c.text}</span></span>{pos>=0&&<i className="story-review__num">{pos+1}</i>}{s.persp==='team'&&<small className="story-review__after">Looking after {c.looksAfter}</small>}
       </button>;})}
     </div>
     {!!s.order.length&&<ol className="story-order" aria-label="Your reply order">{s.order.map((id,k)=>{const c=ix.comments.find(x=>x.id===id)!;return <li key={id}><span>{k+1}. {c.who}</span>{!s.orderDone&&<><button tabIndex={ti(live)} disabled={k===0} aria-label={`Move ${c.who} earlier`} onClick={()=>d({t:'orderMove',id,dir:-1})}>←</button><button tabIndex={ti(live)} disabled={k===s.order.length-1} aria-label={`Move ${c.who} later`} onClick={()=>d({t:'orderMove',id,dir:1})}>→</button></>}</li>;})}</ol>}
