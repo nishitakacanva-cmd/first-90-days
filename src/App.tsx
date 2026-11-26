@@ -8,7 +8,7 @@ import { META, PAGE_COUNT, dayAt } from './data/content';
 import { AssetImage } from './components/AssetImage';
 import { helpPreferences, saveHelp } from './help';
 
-const BASE_W = 1376, BASE_H = 768, BAR = 52, MIN_STAGE_SCALE = 0.84;
+const BASE_W = 1376, BASE_H = 768, MIN_STAGE_SCALE = 0.84;
 
 function useReducedMotion() {
   const q = typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
@@ -25,6 +25,8 @@ export default function App() {
   const d = useCallback((a: Action) => { const cur = sref.current; if (cur.sound) play(sfxFor(a, cur)); raw(a); }, []);
   const reduced = useReducedMotion();
   const wrapRef = useRef<HTMLDivElement>(null);
+  const barRef = useRef<HTMLElement>(null);
+  const [barHeight, setBarHeight] = useState(52);
   const [scale, setScale] = useState(1);
   const [avail, setAvail] = useState(0);
   const [mode, setMode] = useState<'stage' | 'stack'>('stage');
@@ -32,13 +34,15 @@ export default function App() {
   useLayoutEffect(() => {
     function fit() {
       const w = wrapRef.current?.clientWidth ?? window.innerWidth;
-      const h = window.innerHeight - BAR;
+      const bar = barRef.current?.getBoundingClientRect().height ?? 52;
+      const h = window.innerHeight - bar;
+      setBarHeight(bar);
       const sc = Math.min(w / BASE_W, h / BASE_H);
       setScale(sc); setAvail(h);
       setMode(sc < MIN_STAGE_SCALE || window.innerWidth < 900 ? 'stack' : 'stage');
     }
     fit();
-    const ro = new ResizeObserver(fit); if (wrapRef.current) ro.observe(wrapRef.current);
+    const ro = new ResizeObserver(fit); if (wrapRef.current) ro.observe(wrapRef.current); if (barRef.current) ro.observe(barRef.current);
     window.addEventListener('resize', fit);
     return () => { ro.disconnect(); window.removeEventListener('resize', fit); };
   }, []);
@@ -49,7 +53,7 @@ export default function App() {
       if (e.key === 'Escape' && s.tip) { d({ t: 'tipClose' }); return; }
       if (s.phase !== 'desk' || s.panel || e.altKey || e.ctrlKey || e.metaKey) return;
       const el = e.target as HTMLElement;
-      if (el.closest('input, textarea, select, [role="tab"], dialog')) return;
+      if (el.closest('input, textarea, select, [role="tab"], dialog, [contenteditable="true"]')) return;
       const k = e.key;
       if (k === 'ArrowRight' || k === 'PageDown') { e.preventDefault(); d({ t: 'turn', to: s.page + 1 }); }
       else if (k === 'ArrowLeft' || k === 'PageUp') { e.preventDefault(); d({ t: 'turn', to: s.page - 1 }); }
@@ -66,8 +70,8 @@ export default function App() {
   const day = dayAt(s.page);
   const closePanel = () => d({ t: 'panel', p: null });
   return (
-    <div className={'app mode-' + mode + (reduced ? ' rm' : '') + (s.phase === 'finding' ? ' is-finding' : '')}>
-      <header className="topbar">
+    <div className={'app mode-' + mode + (reduced ? ' rm' : '') + (s.phase === 'finding' ? ' is-finding' : '')} style={{ ['--bar-height' as string]: `${barHeight}px` }}>
+      <header className="topbar" ref={barRef}>
         <div className="topbar__brand"><AssetImage k="SB_sb-mark" className="topbar__mark" alt="Studio Bridge" /><b>The First 90 Days</b><span>{META.attribution}</span></div>
         <p className="topbar__where" aria-live="off"><span className="mono">{day ? `DAY ${day.label}` : 'COVER'}</span><span>{s.page + 1} / {PAGE_COUNT}</span></p>
         <nav className="topbar__nav" aria-label="Calendar controls">

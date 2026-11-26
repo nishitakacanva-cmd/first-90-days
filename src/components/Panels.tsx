@@ -3,6 +3,7 @@ import { DAYS, DISCLAIMERS, FINDING, META, SOURCES, THREADS, THREAD_KEYS, dayAt,
 import { learnedItems, type Action, type State } from '../state';
 import { AssetImage } from './AssetImage';
 import { ExperienceMap } from './Interactions';
+import { EvidenceCollage } from './Story';
 
 export function Modal({ open, onClose, label, className = '', children }: { open: boolean; onClose: () => void; label: string; className?: string; children: ReactNode }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -10,6 +11,10 @@ export function Modal({ open, onClose, label, className = '', children }: { open
     const el = ref.current; if (!el) return;
     if (open && !el.open) el.showModal();
     if (!open && el.open) el.close();
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = previous; };
   }, [open]);
   return (
     <dialog ref={ref} className={'modal ' + className} aria-label={label} onCancel={e => { e.preventDefault(); onClose(); }} onClick={e => { if (e.target === ref.current) onClose(); }}>
@@ -53,20 +58,26 @@ export function EvidenceDrawer({ s, d }: { s: State; d: Dispatch<Action> }) {
   const day = dayAt(s.page);
   const keys: SourceKey[] = day ? day.sources : ['sb', 'bauer2010', 'deloitte2025'];
   return (
-    <aside className="drawer" aria-label="Evidence drawer">
+    <Modal open onClose={() => d({ t: 'panel', p: null })} label="Research notes" className="modal--evidence"><aside className="drawer" aria-label="Evidence drawer">
       <X onClick={() => d({ t: 'panel', p: null })} />
       <span className="drawer__tab">RESEARCH NOTES</span>
       <h2>{day ? `Day ${day.label}: what this page rests on` : 'What this calendar rests on'}</h2>
+      <details className="research-card" open><summary>What visitors notice</summary><p>{day ? day.why : 'A job becomes clearer through the work, questions and conversations that follow the offer.'}</p><p className="muted">The situations are authored illustrations, not a record of one participant.</p></details>
+      <details className="research-card" open><summary>Studio Bridge research</summary>
+      <p className="drawer__basis">{SOURCES.sb.note}</p>
+      </details>
+      <details className="research-card"><summary>External references and source notes</summary>
       {day && <p className="drawer__basis">{day.basis}</p>}
-      <h3>Sources</h3>
       <ul className="srcs">
         {keys.map(k => { const x = SOURCES[k]; return (
           <li key={k}><b>{x.title}</b> <span className="muted">— {x.publisher}</span><p>{x.note}</p>{x.url && <a href={x.url} target="_blank" rel="noreferrer">Open source ↗</a>}</li>
         ); })}
       </ul>
-      <h3>Read this before quoting the calendar</h3>
+      </details>
+      <details className="research-card"><summary>Before quoting the calendar</summary>
       <ul className="disc">{DISCLAIMERS.map(t => <li key={t}>{t}</li>)}</ul>
-    </aside>
+      </details>
+    </aside></Modal>
   );
 }
 
@@ -170,11 +181,11 @@ export function Finding({ s, d }: { s: State; d: Dispatch<Action> }) {
     setMsg(window.self !== window.top ? 'Saved — if nothing downloaded, this preview blocks downloads; use Copy.' : 'Saved as the-first-90-days.txt.');
   };
   return (
-    <div className="finding" role="dialog" aria-modal="true" aria-labelledby="finding-h">
+    <Modal open onClose={() => d({ t: 'backToDesk' })} label="What came later" className="modal--finding">
       <div className="finding__card">
+        <X onClick={() => d({ t: 'backToDesk' })} />
         <div className="finding__top">
           <div className="finding__lead">
-            <AssetImage k="SB_pink-pal-celebrate" className="finding__pal" alt="" />
             <span className="attribution">{META.attribution}</span>
             <h1 id="finding-h">{FINDING.headline}</h1>
             <p className="finding__intro">{FINDING.intro}</p>
@@ -185,14 +196,15 @@ export function Finding({ s, d }: { s: State; d: Dispatch<Action> }) {
             <p>Each square is a day. Outlined squares are the twelve turning points; dots show their threads.</p>
           </div>
         </div>
+        <EvidenceCollage s={s} />
         <div className="finding__threads">
           {THREAD_KEYS.map(k => (
-            <section key={k} style={{ ['--tc' as string]: THREADS[k].color }}>
-              <h2>{THREADS[k].label}</h2>
+            <details key={k} style={{ ['--tc' as string]: THREADS[k].color }}>
+              <summary>{THREADS[k].label}</summary>
               <ul>{threadLines(s, k).map(l => <li key={l.day} className={l.seen ? '' : 'is-unseen'}><span className="mono">D{l.day}</span> {l.seen ? l.text : FINDING.notOpened}</li>)}</ul>
               {k === 'self' && L.length > 0 && <p className="finding__yours"><b>Learned from:</b> {L.join(' · ')}</p>}
               {k === 'self' && s.keep.length > 0 && <p className="finding__yours"><b>Keeping:</b> {s.keep.join(' · ')}</p>}
-            </section>
+            </details>
           ))}
         </div>
         <p className="finding__close">{FINDING.close}</p>
@@ -206,7 +218,7 @@ export function Finding({ s, d }: { s: State; d: Dispatch<Action> }) {
         <p className="finding__msg" role="status">{msg}</p>
         <p className="finding__fine">{META.researchNote} {META.composite} Nothing is scored.</p>
       </div>
-    </div>
+    </Modal>
   );
 }
 

@@ -5,6 +5,7 @@ import { asset } from '../data/assets';
 export function AssetImage({ k, alt = '', className = '', style, label }: { k: string; alt?: string; className?: string; style?: CSSProperties; label?: string }) {
   const a = asset(k);
   const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   if (failed) {
     return (
       <span className={'asset-fallback ' + className} style={style} role={alt ? 'img' : undefined} aria-label={alt || undefined} data-missing={k}>
@@ -12,5 +13,5 @@ export function AssetImage({ k, alt = '', className = '', style, label }: { k: s
       </span>
     );
   }
-  return <img src={a.path} width={a.w} height={a.h} alt={alt} className={className} style={style} draggable={false} decoding="async" onError={() => setFailed(true)} />;
+  return <img src={a.path} width={a.w} height={a.h} alt={alt} className={className + ' asset-image' + (loaded ? ' is-loaded' : '')} style={style} draggable={false} decoding="async" onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />;
 }

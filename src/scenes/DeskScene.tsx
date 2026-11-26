@@ -27,11 +27,11 @@ export function DeskScene({ s, d, mode, scale, reduced, avail = 0 }: Props) {
     return (
       <div className="stage-wrap" style={{ height: Math.max(768 * scale, avail) }}>
         <div className="stage-wrap__blur" aria-hidden="true" style={{ backgroundImage: `url(${env})` }} />
+        <LightOverlays s={s} />
         <div className={'stage light-' + s.light} style={{ transform: `scale(${scale})`, top: Math.max(0, (avail - 768 * scale) / 2) }}>
           <AssetImage k="FD_ENV_01_OverheadDesk_v01" className="stage__env" alt="" label="Overhead oak desk" />
           <DeskProps s={s} d={d} stage />
           <Calendar s={s} d={d} reduced={reduced} withBoard />
-          <LightOverlays s={s} />
           {!reduced && <Motes light={s.light} />}
           {s.hints && Object.keys(s.tried).length === 0 && <p className="deskhint"><AssetImage k="SB_blue-pal-pointing" alt="" />{PAL.intro}</p>}
           {why && <div className="whyslot"><WhyNote key={why.id} s={s} day={why} live={!s.turning} /></div>}
